@@ -133,7 +133,7 @@
         <!--Detail Controller-->
         <scene sceneID="8fu-Yp-PtS">
             <objects>
-                <viewController id="9lU-Yw-Fpu" customClass="DetailController" customModule="PlacesToClean" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailController" id="9lU-Yw-Fpu" customClass="DetailController" customModule="PlacesToClean" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CaE-vk-Cez">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -154,13 +154,54 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MaF-z0-fsg">
-                                                <rect key="frame" x="304" y="0.0" width="67" height="35"/>
+                                                <rect key="frame" x="262" y="553" width="67" height="35"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Close"/>
                                                 <connections>
                                                     <action selector="Close:" destination="9lU-Yw-Fpu" eventType="touchDown" id="KlZ-mp-Q82"/>
                                                     <action selector="Close:" destination="9lU-Yw-Fpu" eventType="touchUpInside" id="V70-VA-vE6"/>
+                                                </connections>
+                                            </button>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="edm-70-Ppo">
+                                                <rect key="frame" x="67" y="149" width="240" height="146"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G6M-EK-U7k">
+                                                <rect key="frame" x="0.0" y="8" width="375" height="102"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                            </pickerView>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Text Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lev-fn-Zdl">
+                                                <rect key="frame" x="67" y="107" width="97" height="34"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTT-HD-mdu">
+                                                <rect key="frame" x="51" y="553" width="80" height="35"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Update"/>
+                                                <connections>
+                                                    <action selector="Update:" destination="9lU-Yw-Fpu" eventType="touchDown" id="yJC-JF-CBb"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Byt-5Z-O7c">
+                                                <rect key="frame" x="164" y="553" width="74" height="35"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Delete"/>
+                                                <connections>
+                                                    <action selector="Delete:" destination="9lU-Yw-Fpu" eventType="touchDown" id="GJD-mm-byq"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9dm-at-qA8">
+                                                <rect key="frame" x="184" y="303" width="123" height="35"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Select Image"/>
+                                                <connections>
+                                                    <action selector="SelectImage:" destination="9lU-Yw-Fpu" eventType="touchDown" id="VMd-lS-vOU"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -189,6 +230,12 @@
                             <constraint firstItem="DUn-5I-Hsg" firstAttribute="top" secondItem="fK1-tl-fpm" secondAttribute="top" id="oqf-gV-cQB"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imagePicked" destination="edm-70-Ppo" id="V3Z-Qy-NDD"/>
+                        <outlet property="textDescription" destination="4LX-eV-bPe" id="NrC-6j-Wkg"/>
+                        <outlet property="textName" destination="lev-fn-Zdl" id="662-0f-wd5"/>
+                        <outlet property="viewPicker" destination="G6M-EK-U7k" id="fzs-V3-Lqo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dON-gi-Bvw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

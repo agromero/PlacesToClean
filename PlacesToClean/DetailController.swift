@@ -7,22 +7,30 @@
 
 import UIKit
 
-class DetailController: UIViewController {
+class DetailController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 /*
     @IBOutlet weak var constraintHeight: NSLayoutConstraint!
+*/
     
     @IBOutlet weak var viewPicker: UIPickerView!
     @IBOutlet weak var imagePicked: UIImageView!
     @IBOutlet weak var textName: UITextField!
     @IBOutlet weak var textDescription: UITextView!
-*/
+
     var place:Place? = nil
-/*
+
+    // Places types
+    let pickerElems1 = ["Generic place", "Touristic place"]
+
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-      
-        self.constraintHeight.constant = 400
+        //self.constraintHeight.constant = 400
         // Do any additional setup after loading the view.
+        
+        //Sempre mostrem el Picker
+        viewPicker.delegate = self
+        viewPicker.dataSource = self
         
         if(place != nil){
             
@@ -57,10 +65,34 @@ class DetailController: UIViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
     @IBAction func Close(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
- 
+    
+    @IBAction func Update(_ sender: Any) {
+    }
+    
+    @IBAction func Delete(_ sender: Any) {
+    }
+    
+    @IBAction func SelectImage(_ sender: Any) {
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int
+     {
+     return 1
+     }
+     
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+     {
+     return pickerElems1.count
+     }
+     
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
+     {
+     return pickerElems1[row]
+     }
+    
 }
