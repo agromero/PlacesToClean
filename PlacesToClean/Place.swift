@@ -11,13 +11,18 @@ import MapKit
 class Place {
     
     enum PlacesTypes {
-        case GenericPlace
-        case TouristicPlace
-        
+        case General
+        case Sidewalk
+        case Grafitti
+        case Window
+        case Furniture
+        case Debris
+        case Litter
+        case Weeding
     }
     
     var id:String = ""
-    var type:PlacesTypes = .GenericPlace
+    var type:PlacesTypes = .General
     var name:String = ""
     var description:String = ""
     var location: CLLocationCoordinate2D!
@@ -41,21 +46,4 @@ class Place {
         self.id = UUID().uuidString
     }
     
-}
-
-class PlaceTourist: Place {
-    
-    var discount_tourist: String = ""
-    
-    override init()
-    {
-        super.init()
-        type = .TouristicPlace
-    }
-    
-    init(name:String, description:String, discount_tourist:String, image_in:Data?)
-    {
-        super.init(type:.TouristicPlace, name: name, description: description, image_in: image_in)
-        self.discount_tourist = discount_tourist
-    }
 }

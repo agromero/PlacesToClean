@@ -6,60 +6,37 @@
 //
 
 import UIKit
+import CoreData
 
 class FirstViewController: UITableViewController {
     
-    let m_provider = ManagerPlaces.shared
+    var data: [PTC] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let view: UITableView = (self.view as? UITableView)!;
+        let view: UITableView = (self.view as? UITableView)!
         view.delegate = self
         view.dataSource = self
-        // Do any additional setup after loading the view, typically from a nib.
+        loadData()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-    
+        
     //Protocolo Tabla
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-        // Número de elmentos del manager
-        
-        return m_provider.GetCount()
-        //return 2
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        data.count
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // Sirve para indicar subsecciones de la lista. En nuestro caso devolvemos
         // 1 porque no hay subsecciones.
-        return 1;
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Detectar pulsación en un elemento.
-        
-        let place: Place = self.m_provider.GetItemAt(position: indexPath.row)
-        
-        let dc:DetailController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailController") as! DetailController
-        dc.place = place
-        present(dc, animated: true, completion: nil)
+        let place = self.data[indexPath.row]
+        performSegue(withIdentifier: "goToDetails", sender: place)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -68,19 +45,69 @@ class FirstViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let celda = tableView.dequeueReusableCell(withIdentifier: "PlaceCell", for: indexPath) as? PlaceCell else { return UITableViewCell() }
         
-        // devolver una instancia de la clase UITableViewCell que pinte la fila
-        //seleccionada.
+        let place = self.data[indexPath.row]
         
-        let celda = UITableViewCell(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: tableView.frame.size.width, height: 100)))
+        celda.placeTitleLabel.text = place.title
+        celda.placeSubtitleLabel.text = place.desc
         
-        celda.textLabel?.text = m_provider.GetItemAt(position: indexPath.row).name
+        if let image = place.image {
+            celda.placeImageView.image = UIImage(data: image)
+        } else {
+            celda.placeImageView.image = nil
+        }
         
-        //No funciona per pintar el subtítol
-        //celda.detailTextLabel?.text =  m_provider.GetItemAt(position: indexPath.row).description
-
         return celda
+        
     }
     
+    func onPlacesChange() {
+        let view: UITableView = (self.view as? UITableView)!
+        view.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
+        if segue.identifier == "goToDetails",
+           let viewController = segue.destination as? DetailController {
+            viewController.place = sender as? PTC
+            viewController.handler = {
+                self.loadData()
+            }
+        }
+    }
 }
 
+extension FirstViewController {
+    
+    func loadData() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+        
+        guard let data = fetchRecordsForEntity("PTC", inManagedObjectContext: context) as? [PTC] else { return }
+        self.data = data
+        onPlacesChange()
+    }
+    
+    private func fetchRecordsForEntity(_ entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> [NSManagedObject] {
+        // Create Fetch Request
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+
+        // Helpers
+        var result = [NSManagedObject]()
+
+        do {
+            // Execute Fetch Request
+            let records = try managedObjectContext.fetch(fetchRequest)
+
+            if let records = records as? [NSManagedObject] {
+                result = records
+            }
+
+        } catch {
+            print("Unable to fetch managed objects for entity \(entity).")
+        }
+
+        return result
+    }
+}
