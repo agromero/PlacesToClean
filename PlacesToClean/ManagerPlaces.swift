@@ -6,12 +6,12 @@
 //
 
 import Foundation
-import MapKit
+import CoreData
+import UIKit
 
-class ManagerPlaces
-{
+class ManagerPlaces {
 
-    var places:[Place] = []
+    var places: [PTC] = []
     
     //******************************
     //Singleton
@@ -19,34 +19,45 @@ class ManagerPlaces
     static var shared = ManagerPlaces()
     //******************************
 
-    func append(_ value:Place)
-    {
-        places.append(value)
+    var reload: (() -> Void)?
+    
+    init() {
+        loadData()
     }
     
-    func GetCount() ->Int
-    {
-        return places.count
-    }
-    
-    func GetItemAt(position: Int) -> Place
-    {
-        return places[position]
-    }
-    
-    func GetItemById(id:String) -> Place
-    {
-        return places.filter( { $0.id == id})[0]
-    }
-    
-    func remove(_ value:Place)
-    {
-        //Amb el filter eliminant per id
-        places = places.filter( { $0.id != value.id} )
+    func loadData() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
         
-        //Amb el filter eliminant per Place
-        //places = places.filter( { $0 !== value} )
+        guard let data = fetchRecordsForEntity("PTC", inManagedObjectContext: context) as? [PTC] else { return }
+        self.places = data
+        reload?()
+    }
+    
+    private func fetchRecordsForEntity(_ entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> [NSManagedObject] {
+        // Create Fetch Request
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+
+        // Helpers
+        var result = [NSManagedObject]()
+
+        do {
+            // Execute Fetch Request
+            let records = try managedObjectContext.fetch(fetchRequest)
+
+            if let records = records as? [NSManagedObject] {
+                result = records
+            }
+
+        } catch {
+            print("Unable to fetch managed objects for entity \(entity).")
+        }
+
+        return result
     }
    
+    func GetItemById(id: Int32) -> PTC {
+        places.filter( { $0.id == id})[0]
+    }
 }
 

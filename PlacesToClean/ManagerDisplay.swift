@@ -40,7 +40,6 @@ class ManagerDisplay : Codable {
     }()
     
     class func shared() -> ManagerDisplay {
-
         return sharedManagerDisplay
     }
 

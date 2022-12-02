@@ -52,7 +52,16 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
         initKeyboard()
         textName.delegate = self
         textDescription.delegate = self
+        
+        applyTheme()
     }
+        
+    func applyTheme() {
+        view.backgroundColor = UIColor(named: "primaryColor")
+        btnSave.setTitleColor(.red, for: .normal)
+        textName.backgroundColor = .red
+    }
+    
     
     fileprivate func updateMode() {
         //Quan és un place existent (UPDATE), mostrem:
@@ -97,6 +106,7 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
     }
     
     @IBAction func Delete(_ sender: Any) {
+        deleteData()
     }
 
     @IBAction func Cancel(_ sender: Any) {
@@ -220,11 +230,13 @@ extension DetailController {
 extension DetailController {
    
     func deleteData() {
-        var objectToDelete = place
+        guard let objectToDelete = place else { return }
             
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-        objectToDelete?.deletedDate = Date()
+        
+        context.delete(objectToDelete)
+        
         do
         {
             try context.save()
@@ -234,7 +246,7 @@ extension DetailController {
         }
         catch
         {
-            print("context save error")
+            print("context delete error")
         }
     }
     
@@ -245,8 +257,8 @@ extension DetailController {
         let selectedtype = viewPicker.selectedRow(inComponent: 0)
         let imgdata = imagePicked.image?.jpegData(compressionQuality: 0.75)
         
-        let localizationLatitude = ManagerLocation.GetLocation().latitude
-        let localizationLongitude = ManagerLocation.GetLocation().longitude
+        let localizationLatitude = ManagerLocation.shared().GetLocation().latitude
+        let localizationLongitude = ManagerLocation.shared().GetLocation().longitude
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
