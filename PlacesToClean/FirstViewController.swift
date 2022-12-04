@@ -12,6 +12,7 @@ class FirstViewController: UITableViewController {
     
     let m_places_manager: ManagerPlaces = ManagerPlaces.shared
     let m_display_manager: ManagerDisplay = ManagerDisplay.shared()
+    let m_location_manager: ManagerLocation = ManagerLocation.shared()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,7 @@ class FirstViewController: UITableViewController {
         //self.navigationController?.navigationBar.barStyle = .black
         //self.navigationController?.navigationBar.tintColor = UIColor(named: "primaryColor")
 
+        // Apply NavBar controller
         let newNavBarAppearance = customNavBarAppearance()
         navigationController!.navigationBar.scrollEdgeAppearance = newNavBarAppearance
         navigationController!.navigationBar.compactAppearance = newNavBarAppearance
@@ -44,6 +46,7 @@ class FirstViewController: UITableViewController {
             navigationController!.navigationBar.compactScrollEdgeAppearance = newNavBarAppearance
         }
         
+        // Apply TabBar controller
         self.tabBarController?.tabBar.barTintColor = UIColor(named: "secondaryColor")
         self.tabBarController?.tabBar.tintColor = .white
     }

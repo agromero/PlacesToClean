@@ -51,10 +51,14 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
     }
         
     func applyTheme() {
+        self.view.backgroundColor = .red
+       
+        
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.navigationBar.barStyle = .black
         self.navigationController?.navigationBar.tintColor = .white
         
+        // Apply TabBar controller
         self.tabBarController?.tabBar.barTintColor = UIColor(named: "secondaryColor")
         self.tabBarController?.tabBar.tintColor = .white
     }

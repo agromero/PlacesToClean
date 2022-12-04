@@ -17,7 +17,7 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
     @IBOutlet weak var imagePicked: UIImageView!
     @IBOutlet weak var textName: UITextField!
     @IBOutlet weak var textDescription: UITextView!
- 
+
     @IBOutlet weak var btnSave: UIButton!
     @IBOutlet weak var btnDelete: UIButton!
     
@@ -34,6 +34,8 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
     // Places types spanish
     let pickerElems1 = ["General", "Aceras", "Grafitti/Pintura", "Cristales", "Mobiliario", "Escombros", "Basura", "Maleza"]
     
+    let m_location_manager: ManagerLocation = ManagerLocation.shared()
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -57,7 +59,6 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
     }
         
     func applyTheme() {
-        view.backgroundColor = UIColor(named: "primaryColor")
         btnSave.setTitleColor(.red, for: .normal)
         textName.backgroundColor = .red
     }

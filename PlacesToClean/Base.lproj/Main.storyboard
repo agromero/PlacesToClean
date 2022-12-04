@@ -320,8 +320,8 @@
         <segue reference="RB5-tG-EnP"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="first" width="32" height="32"/>
+        <image name="second" width="32" height="32"/>
         <image name="trash.fill" catalog="system" width="119" height="128"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
