@@ -28,42 +28,53 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
     
     let m_location_manager: ManagerLocation = ManagerLocation.shared()
     let m_places_manager: ManagerPlaces = ManagerPlaces.shared
-    let m_display_manager : ManagerDisplay = ManagerDisplay.shared()
     
+  
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        m_display_manager.ApplyBackground(v: self.view)
-        m_display_manager.ApplyNavigationBarStyle(vc: self)
-        
+       
         self.m_map.mapType = MKMapType.standard
         self.m_map.delegate = self
         
         self.m_map.showsUserLocation = true
-        
+
+        print ("Reload Map1")
+ 
         m_places_manager.reload =  {
             // TODO reload mapa
+            print ("Reload Map2")
+            //self.RemoveMarkers()
+            //self.AddMarkers()
         }
-
-        AddMarkers()
+  
         applyTheme()
     }
         
     func applyTheme() {
-        self.view.backgroundColor = .red
-       
-        
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.navigationBar.barStyle = .black
-        self.navigationController?.navigationBar.tintColor = .white
-        
+ 
         // Apply TabBar controller
-        self.tabBarController?.tabBar.barTintColor = UIColor(named: "secondaryColor")
-        self.tabBarController?.tabBar.tintColor = .white
+        self.tabBarController?.tabBar.barTintColor =  UIColor(named: "colorMain2") // Color Fondo
+        self.tabBarController?.tabBar.tintColor = UIColor(named: "colorText1") // Color Activo
+        self.tabBarController?.tabBar.unselectedItemTintColor = UIColor(named: "colorText2") // Color inactivo
+
+
+        // Apply NavBar controller
+        let appearance = UINavigationBarAppearance()
+        // This will change the navigation bar background color
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor =  UIColor(named: "colorMain1")
+        // This will alter the navigation bar title appearance
+        appearance.titleTextAttributes = [NSAttributedString.Key.font:  UIFont.systemFont(ofSize: 18, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.init(named: "colorText1") as Any]
+
+        self.navigationController?.navigationBar.standardAppearance = appearance
+        self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
+ 
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "colorText1")
+
+
     }
 
-    
     func RemoveMarkers(){
         
         let lista = self.m_map.annotations.filter { !($0 is MKUserLocation) }
@@ -74,8 +85,9 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
     func AddMarkers(){
         
         for i in 0..<m_places_manager.places.count {
+            print (m_places_manager.places.count)
             let item = m_places_manager.places[i]
-            
+
             let title:String = item.title ?? ""
             let id:String = "\(item.id)"
             let lat:Double = item.latitude
@@ -87,6 +99,7 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
             self.m_map.addAnnotation(annotation)
         }
     }
+
 
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?{
@@ -162,7 +175,7 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
             
             for v in view.subviews {
                 if v.subviews.count > 0 {
-                    v.subviews[0].backgroundColor = UIColor.black
+                    v.subviews[0].backgroundColor = UIColor.green
                     v.subviews[0].alpha = 0.8
                 }
             }
@@ -195,18 +208,12 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
     }
  
     
-      func onPlacesChange(){
-        self.RemoveMarkers()
-        self.AddMarkers()
-    }
-
-    
     func ReplaceColorText(v:UIView){
 
         for subview in v.subviews {
             if((subview as? UILabel) != nil) {
                 
-                (subview as? UILabel)?.textColor = UIColor.white
+                (subview as? UILabel)?.textColor = UIColor.blue
             }
             else
             {
@@ -215,9 +222,8 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
         }
     }
 
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+      func onPlacesChange(){
+        self.RemoveMarkers()
+        self.AddMarkers()
     }
-
-}
+ }

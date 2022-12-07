@@ -15,7 +15,6 @@
 		7F4AEE752911BA55000BCDD2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4AEE742911BA55000BCDD2 /* SceneDelegate.swift */; };
 		7F52A4FD29241D3A00EC71BD /* ManagerLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52A4FC29241D3A00EC71BD /* ManagerLocation.swift */; };
 		7F6F4C0529269769008DDD08 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6F4C0429269769008DDD08 /* PlaceCell.swift */; };
-		7FA95CA02932176B003C973F /* ManagerDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA95C9F2932176B003C973F /* ManagerDisplay.swift */; };
 		7FA95CA52933661A003C973F /* MKMyPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA95CA42933661A003C973F /* MKMyPointAnnotation.swift */; };
 		7FA95CAE29337AF1003C973F /* PlacesDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7FA95CA1293218F9003C973F /* PlacesDB.xcdatamodeld */; };
 		7FA95CB129337B2F003C973F /* PTC+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA95CAF29337B2F003C973F /* PTC+CoreDataClass.swift */; };
@@ -37,7 +36,6 @@
 		7F4AEE742911BA55000BCDD2 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7F52A4FC29241D3A00EC71BD /* ManagerLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerLocation.swift; sourceTree = "<group>"; };
 		7F6F4C0429269769008DDD08 /* PlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
-		7FA95C9F2932176B003C973F /* ManagerDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerDisplay.swift; sourceTree = "<group>"; };
 		7FA95CA2293218F9003C973F /* PlacesDB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PlacesDB.xcdatamodel; sourceTree = "<group>"; };
 		7FA95CA42933661A003C973F /* MKMyPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMyPointAnnotation.swift; sourceTree = "<group>"; };
 		7FA95CAF29337B2F003C973F /* PTC+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PTC+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -83,7 +81,6 @@
 				7F4AEE742911BA55000BCDD2 /* SceneDelegate.swift */,
 				7FF5C670291C20E2000C5989 /* Place.swift */,
 				7F6F4C0429269769008DDD08 /* PlaceCell.swift */,
-				7FA95C9F2932176B003C973F /* ManagerDisplay.swift */,
 				7FF5C672291C2446000C5989 /* ManagerPlaces.swift */,
 				7F52A4FC29241D3A00EC71BD /* ManagerLocation.swift */,
 				7FA95CA42933661A003C973F /* MKMyPointAnnotation.swift */,
@@ -186,7 +183,6 @@
 				7F52A4FD29241D3A00EC71BD /* ManagerLocation.swift in Sources */,
 				7FA95CB229337B2F003C973F /* PTC+CoreDataProperties.swift in Sources */,
 				7F2AD7962911A45D00BE2A63 /* AppDelegate.swift in Sources */,
-				7FA95CA02932176B003C973F /* ManagerDisplay.swift in Sources */,
 				7FA95CA52933661A003C973F /* MKMyPointAnnotation.swift in Sources */,
 				7F4AEE752911BA55000BCDD2 /* SceneDelegate.swift in Sources */,
 				7FF5C675291C29CC000C5989 /* FirstViewController.swift in Sources */,
@@ -343,10 +339,11 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PlacesToClean/Info.plist;
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = NO;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -375,10 +372,11 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PlacesToClean/Info.plist;
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = NO;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -11,6 +11,7 @@ import CoreData
 class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate
 {
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var scrollViewInnerView: UIView!
     @IBOutlet weak var constraintHeight: NSLayoutConstraint!
 
     @IBOutlet weak var viewPicker: UIPickerView!
@@ -18,8 +19,11 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
     @IBOutlet weak var textName: UITextField!
     @IBOutlet weak var textDescription: UITextView!
 
-    @IBOutlet weak var btnSave: UIButton!
+    @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var btnDelete: UIButton!
+    @IBOutlet weak var btnSave: UIButton!
+    @IBOutlet weak var btnImage: UIButton!
+    @IBOutlet weak var btnPhoto: UIButton!
     
     var keyboardHeight:CGFloat!
     var activeField: UIView!
@@ -44,10 +48,27 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
         //Sempre mostrem el Picker
         viewPicker.delegate = self
         viewPicker.dataSource = self
+
+        btnCancel.setTitle("Cancel", for: .normal)
+        btnCancel.setTitle("Cancel", for: .highlighted)
+        btnDelete.setImage(UIImage(named: "trash.fill"), for: .normal)
+        
+        btnSave.setTitle("Save", for: .normal)
+        btnSave.setTitle("Save", for: .highlighted)
+        btnPhoto.setTitle("Take Picture", for: .normal)
+        btnPhoto.setTitle("Take Picture", for: .highlighted)
         
         if place == nil {
+            //Cuando es un nuevo place (CREATE), mostramos:
+            btnImage.setTitle("Add Image", for: .normal)
+            btnImage.setTitle("Add Image", for: .highlighted)
+            //Ocultamos el botón Delete
+            btnDelete.isHidden = true
             creationMode()
         } else{
+            //Cuando es un place ya existente (UPDATE), mostramos:
+            btnImage.setTitle("Change Image", for: .normal)
+            btnImage.setTitle("Change Image", for: .highlighted)
             updateMode()
         }
         
@@ -59,42 +80,45 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
     }
         
     func applyTheme() {
-        btnSave.setTitleColor(.red, for: .normal)
-        textName.backgroundColor = .red
+        //Color de fondo
+        scrollViewInnerView.backgroundColor =  UIColor(named: "colorMain2")
+
+        //Colores de los botones
+        btnCancel.setTitleColor(UIColor(named: "colorText1"), for: .normal)
+        btnDelete.tintColor = (UIColor(named: "colorText1"))
+        btnSave.setTitleColor(UIColor(named: "colorText1"), for: .normal)
+        btnPhoto.backgroundColor = UIColor(named: "colorText1")
+        btnPhoto.setTitleColor(UIColor(named: "colorMain2"), for: .normal)
+        btnImage.backgroundColor = UIColor(named: "colorText1")
+        btnImage.setTitleColor(UIColor(named: "colorMain2"), for: .normal)
+
+        //Colores de los textos
+        textName.backgroundColor = (UIColor(named: "colorText1"))
+        textName.textColor = (UIColor(named: "colorMain1"))
+        textDescription.backgroundColor = (UIColor(named: "colorText1"))
+        textDescription.textColor = (UIColor(named: "colorMain1"))
+
+        imagePicked.layer.borderWidth = 0.5  //Imatge: Temporalment afegim un border
+        imagePicked.layer.borderColor = UIColor(named: "colorText1")?.cgColor
     }
-    
-    
+        
     fileprivate func updateMode() {
-        //Quan és un place existent (UPDATE), mostrem:
-        btnSave.setTitle("Save", for: .normal)
-        btnSave.setTitle("Save", for: .highlighted)
-                
-        //Premen a la llsta
+         //Mostramos el Place existente
         textName.text = place!.title
         textDescription.text = place!.desc
-        
+
         if let image = place!.image {
             imagePicked.image = UIImage(data: image)
         }
-        
-        //Temporalment afegim un border a la imatge mentre no disposem d'imatges
-        imagePicked.layer.borderWidth = 1
     }
     
     fileprivate func creationMode() {
-        //Es un place Nou (NEW), mostrem els camps a omplir
-        btnSave.setTitle("Save", for: .normal)
-        btnSave.setTitle("Save", for: .highlighted)
-        
-        //Ocultem el botó Delete perquè no hem creat encara el Place
-        btnDelete.isHidden = true
-        
-        // Es nou
+        //Creamos un nuevo Place
         textName.placeholder = "Enter Title here"
         textDescription.text = "Enter Description here"
     }
     
-    @IBAction func SelectImage(_ sender: Any) {
+    @IBAction func selectImage(_ sender: Any) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary;
@@ -102,15 +126,23 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
         self.present(imagePicker, animated: true, completion: nil)
     }
 
+    @IBAction func takePhoto(_ sender: Any){
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera;
+        imagePicker.allowsEditing = false
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+    
     @IBAction func onSaveButtonPressed(_ sender: Any) {
         saveData()
     }
     
-    @IBAction func Delete(_ sender: Any) {
+    @IBAction func onDeleteButtonPressed(_ sender: Any) {
         deleteData()
     }
 
-    @IBAction func Cancel(_ sender: Any) {
+    @IBAction func onCancelButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
@@ -134,6 +166,11 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
         
     }
     
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let labelData = pickerElems1[row]
+        let myTitle = NSAttributedString(string: labelData, attributes: [NSAttributedString.Key.foregroundColor:UIColor(named: "colorText1")!])
+         return myTitle
+     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
     {
@@ -147,8 +184,7 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
         dismiss(animated:true, completion: nil)
     }
     
-    func imagePickerControllerDidCancel(_ picker:
-                                        UIImagePickerController) {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated:true, completion: nil)
     }
     
