@@ -22,9 +22,9 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
     @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var btnDelete: UIButton!
     @IBOutlet weak var btnSave: UIButton!
+    //@IBOutlet weak var btnPhoto: UIButton!
     @IBOutlet weak var btnImage: UIButton!
-    @IBOutlet weak var btnPhoto: UIButton!
-    
+
     var keyboardHeight:CGFloat!
     var activeField: UIView!
     var lastOffset:CGPoint!
@@ -55,13 +55,14 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
         
         btnSave.setTitle("Save", for: .normal)
         btnSave.setTitle("Save", for: .highlighted)
-        btnPhoto.setTitle("Take Picture", for: .normal)
-        btnPhoto.setTitle("Take Picture", for: .highlighted)
+        //btnPhoto.setTitle("Take Picture", for: .normal)
+        //btnPhoto.setTitle("Take Picture", for: .highlighted)
         
         if place == nil {
             //Cuando es un nuevo place (CREATE), mostramos:
             btnImage.setTitle("Add Image", for: .normal)
             btnImage.setTitle("Add Image", for: .highlighted)
+            
             //Ocultamos el botón Delete
             btnDelete.isHidden = true
             creationMode()
@@ -71,8 +72,9 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
             btnImage.setTitle("Change Image", for: .highlighted)
             updateMode()
         }
-        
+
         initKeyboard()
+        initImgMenu()
         textName.delegate = self
         textDescription.delegate = self
         
@@ -80,6 +82,7 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
     }
         
     func applyTheme() {
+        
         //Color de fondo
         scrollViewInnerView.backgroundColor =  UIColor(named: "colorMain2")
 
@@ -87,19 +90,33 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
         btnCancel.setTitleColor(UIColor(named: "colorText1"), for: .normal)
         btnDelete.tintColor = (UIColor(named: "colorText1"))
         btnSave.setTitleColor(UIColor(named: "colorText1"), for: .normal)
-        btnPhoto.backgroundColor = UIColor(named: "colorText1")
-        btnPhoto.setTitleColor(UIColor(named: "colorMain2"), for: .normal)
-        btnImage.backgroundColor = UIColor(named: "colorText1")
-        btnImage.setTitleColor(UIColor(named: "colorMain2"), for: .normal)
+        
+        //btnPhoto.layer.cornerRadius = 10.0
+        //btnPhoto.backgroundColor = UIColor(named: "colorMain1")
+        //btnPhoto.setTitleColor(UIColor(named: "colorText1"), for: .normal)
 
+        btnImage.layer.cornerRadius = 10.0
+        btnImage.backgroundColor = UIColor(named: "colorMain1")
+        btnImage.setTitleColor(UIColor(named: "colorText1"), for: .normal)
+        btnImage.setTitleColor(UIColor(named: "colorGrey"), for: .highlighted)
+        
         //Colores de los textos
-        textName.backgroundColor = (UIColor(named: "colorText1"))
-        textName.textColor = (UIColor(named: "colorMain1"))
-        textDescription.backgroundColor = (UIColor(named: "colorText1"))
-        textDescription.textColor = (UIColor(named: "colorMain1"))
+        textName.layer.cornerRadius = 10.0
+        textName.backgroundColor = (UIColor(named: "colorMain1"))
+        textName.textColor = (UIColor(named: "colorText1"))
+        
+        textDescription.layer.cornerRadius = 10.0
+        textDescription.backgroundColor = (UIColor(named: "colorMain1"))
+        textDescription.textColor = (UIColor(named: "colorText1"))
 
-        imagePicked.layer.borderWidth = 0.5  //Imatge: Temporalment afegim un border
+        imagePicked.layer.cornerRadius = 10.0
+        imagePicked.layer.borderWidth = 0.5
         imagePicked.layer.borderColor = UIColor(named: "colorText1")?.cgColor
+        imagePicked.contentMode = UIView.ContentMode.scaleToFill
+        if imagePicked.image == nil
+        {
+            imagePicked.image = UIImage(systemName: "photo.fill")
+        }
     }
         
     fileprivate func updateMode() {
@@ -114,10 +131,18 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
     
     fileprivate func creationMode() {
         //Creamos un nuevo Place
-        textName.placeholder = "Enter Title here"
+        //textName.placeholder = "Enter Title here"
+        textName.attributedPlaceholder = NSAttributedString(
+            string: "  Enter Title here",
+            attributes:[
+                    NSAttributedString.Key.foregroundColor: UIColor(named: "colorText1")!,
+                    NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)
+                ])
         textDescription.text = "Enter Description here"
+
     }
     
+    /*
     @IBAction func selectImage(_ sender: Any) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -133,7 +158,38 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
         imagePicker.allowsEditing = false
         self.present(imagePicker, animated: true, completion: nil)
     }
+*/
     
+    func initImgMenu() {
+        // Do any additional setup after loading the view.
+        let pictureItem = UIAction(title: "Take Photo", image: UIImage(systemName: "camera.fill")) { (action) in
+             print("Users action was tapped")
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .camera;
+            imagePicker.allowsEditing = false
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+        
+        let imageItem = UIAction(title: "Select Image", image: UIImage(systemName: "photo.on.rectangle")) { (action) in
+            print("Add User action was tapped")
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary;
+            imagePicker.allowsEditing = false
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+
+       let menu = UIMenu(title: "", options: .displayInline, children: [pictureItem , imageItem])
+                
+        btnImage.menu = menu
+        btnImage.showsMenuAsPrimaryAction = true
+    }
+    
+    @IBAction func selectImage(_ sender: Any) {
+
+    }
+   
     @IBAction func onSaveButtonPressed(_ sender: Any) {
         saveData()
     }
@@ -229,7 +285,7 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
         return input.rawValue
     }
 
-    
+
 }
 
 extension DetailController {
@@ -265,10 +321,10 @@ extension DetailController {
 }
 
 extension DetailController {
-   
+    
     func deleteData() {
         guard let objectToDelete = place else { return }
-            
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
         
@@ -309,12 +365,16 @@ extension DetailController {
             objectToSave = place
         }
         
+        objectToSave?.id = Int32(Date().timeIntervalSince1970)
         objectToSave?.title = name
         objectToSave?.desc = descripcion
         objectToSave?.type = Int16(selectedtype)
         objectToSave?.image = imgdata
         objectToSave?.longitude = localizationLongitude
         objectToSave?.latitude = localizationLatitude
+        
+        print("new object location id \(objectToSave?.id ?? 0) long \(localizationLongitude) lat \(localizationLatitude)")
+        
         do
         {
             try context.save()
@@ -327,5 +387,8 @@ extension DetailController {
             print("context save error")
         }
     }
+    
+
+
 }
 

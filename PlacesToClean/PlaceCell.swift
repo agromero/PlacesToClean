@@ -21,15 +21,6 @@ class PlaceCell: UITableViewCell {
         self.placeImageView.layer.borderWidth = 2
         self.placeImageView.layer.cornerRadius = 5.0
         self.placeImageView.contentMode = UIView.ContentMode.scaleToFill
-        /*
-        if super.traitCollection.userInterfaceStyle == .dark {
-            // User Interface is Dark
-            self.placeImageView.layer.borderColor = UIColor.white.cgColor
-        } else {
-            // User Interface is Light
-            self.placeImageView.layer.borderColor = UIColor.black.cgColor
-        }*/
-        
         self.placeImageView.layer.borderColor = UIColor(named: "colorGrey")?.cgColor
 
         //Text Color

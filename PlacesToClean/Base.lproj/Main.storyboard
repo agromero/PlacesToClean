@@ -229,7 +229,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Select Image"/>
                                                 <connections>
-                                                    <action selector="SelectImage:" destination="9lU-Yw-Fpu" eventType="touchDown" id="FrQ-G3-plK"/>
+                                                    <action selector="selectImage:" destination="9lU-Yw-Fpu" eventType="touchDown" id="xS2-35-6HO"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxW-O7-blQ">
@@ -238,14 +238,6 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVh-wQ-XdV">
-                                                <rect key="frame" x="39.999999999999993" y="653" width="117.33333333333331" height="35"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Take Picture"/>
-                                                <connections>
-                                                    <action selector="takePhoto:" destination="9lU-Yw-Fpu" eventType="touchUpInside" id="1Xm-p6-0qa"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <constraints>
@@ -260,15 +252,12 @@
                                             <constraint firstItem="Byt-5Z-O7c" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MaF-z0-fsg" secondAttribute="trailing" constant="8" symbolic="YES" id="LpD-Co-JIl"/>
                                             <constraint firstItem="MaF-z0-fsg" firstAttribute="top" secondItem="4q4-aQ-0cL" secondAttribute="top" constant="10" id="LsU-ol-rTo"/>
                                             <constraint firstItem="G6M-EK-U7k" firstAttribute="leading" secondItem="4q4-aQ-0cL" secondAttribute="leading" constant="40" id="NVm-3g-GKk"/>
-                                            <constraint firstAttribute="bottom" secondItem="MVh-wQ-XdV" secondAttribute="bottom" constant="20" id="Obb-6C-MeB"/>
                                             <constraint firstItem="L1A-6e-0E1" firstAttribute="top" secondItem="G6M-EK-U7k" secondAttribute="bottom" constant="10" id="OwE-g6-rCy"/>
                                             <constraint firstItem="3iE-cP-3os" firstAttribute="top" secondItem="4LX-eV-bPe" secondAttribute="bottom" constant="32" id="P62-ra-vST"/>
                                             <constraint firstItem="4LX-eV-bPe" firstAttribute="leading" secondItem="4q4-aQ-0cL" secondAttribute="leading" constant="40" id="Po1-fd-csx"/>
                                             <constraint firstItem="fTT-HD-mdu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Byt-5Z-O7c" secondAttribute="trailing" constant="8" symbolic="YES" id="PqC-L1-kbn"/>
-                                            <constraint firstItem="MVh-wQ-XdV" firstAttribute="top" secondItem="3iE-cP-3os" secondAttribute="bottom" constant="5" id="Pwq-Q5-9nv"/>
                                             <constraint firstAttribute="trailing" secondItem="4LX-eV-bPe" secondAttribute="trailing" constant="40" id="UBf-bl-00P"/>
                                             <constraint firstItem="dBF-76-4bv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4q4-aQ-0cL" secondAttribute="leading" constant="20" symbolic="YES" id="YbS-Es-P7D"/>
-                                            <constraint firstItem="MVh-wQ-XdV" firstAttribute="leading" secondItem="4q4-aQ-0cL" secondAttribute="leading" constant="40" id="YrX-WP-Bqu"/>
                                             <constraint firstItem="lev-fn-Zdl" firstAttribute="top" secondItem="L1A-6e-0E1" secondAttribute="bottom" constant="2" id="aJE-6p-hKx"/>
                                             <constraint firstAttribute="trailing" secondItem="G6M-EK-U7k" secondAttribute="trailing" constant="40" id="bVJ-VW-9Qj"/>
                                             <constraint firstItem="fTT-HD-mdu" firstAttribute="top" secondItem="4q4-aQ-0cL" secondAttribute="top" constant="10" id="c6I-Y3-Afm"/>
@@ -313,8 +302,7 @@
                     <connections>
                         <outlet property="btnCancel" destination="MaF-z0-fsg" id="NdT-lB-8FM"/>
                         <outlet property="btnDelete" destination="Byt-5Z-O7c" id="VwV-6w-2Nm"/>
-                        <outlet property="btnImage" destination="dBF-76-4bv" id="cDB-xi-7it"/>
-                        <outlet property="btnPhoto" destination="MVh-wQ-XdV" id="Uoh-Gr-CMZ"/>
+                        <outlet property="btnImage" destination="dBF-76-4bv" id="Me3-PL-Laz"/>
                         <outlet property="btnSave" destination="fTT-HD-mdu" id="jXf-wD-wHU"/>
                         <outlet property="constraintHeight" destination="CaE-vk-Cez" id="XjH-Ow-AMZ"/>
                         <outlet property="imagePicked" destination="3iE-cP-3os" id="2tu-go-pIJ"/>
@@ -355,7 +343,7 @@
         <image name="map" catalog="system" width="128" height="112"/>
         <image name="trash.fill" catalog="system" width="119" height="128"/>
         <namedColor name="colorMain1">
-            <color red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.95686274509803926" green="0.95686274509803926" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

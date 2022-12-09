@@ -13,6 +13,7 @@ class ManagerPlaces {
 
     var places: [PTC] = []
     
+    
     //******************************
     //Singleton
     //

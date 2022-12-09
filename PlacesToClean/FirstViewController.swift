@@ -29,57 +29,15 @@ class FirstViewController: UITableViewController {
     }
         
     func applyTheme() {
-        //Apply TableView controller
-        self.view.backgroundColor =  .white //UIColor(named: "colorMain2")
-        self.tableView.backgroundColor = UIColor(named: "colorMain2")
-        self.tableView.separatorColor = UIColor(named: "colorText1")
+        ThemeManager.applyTabControllerTheme(self.tabBarController)
+        ThemeManager.applyNavBarControllerTheme(self.navigationController)
 
-         
-        /* OLD DESIGN
-         vc.navigationController?.navigationBar.isTranslucent = true
-         vc.navigationController?.navigationBar.barStyle = .black
-         vc.navigationController?.navigationBar.tintColor = .white
-         vc.navigationItem.rightBarButtonItem?.image = UIImage(named: "pinplus1")
-
-         let logo = UIImage(named: "myplaces_logo")
-         let imageView = UIImageView(frame: CGRect(x: 300, y: 0, width: 400, height: 150))
-         imageView.contentMode = .scaleAspectFit
-         imageView.image = logo
-         vc.navigationItem.titleView = imageView
-        */
-
-        // Apply TabBar controller
-        self.tabBarController?.tabBar.barTintColor =  UIColor(named: "colorMain2") // Color Fondo
-        self.tabBarController?.tabBar.isOpaque = true
-        self.tabBarController?.tabBar.tintColor = UIColor(named: "colorText1") // Color Activo
-        self.tabBarController?.tabBar.unselectedItemTintColor = UIColor(named: "colorText2") // Color inactivo
-
-        //Apply external border
-        self.tabBarController!.tabBar.layer.borderWidth = 0.50
-        self.tabBarController!.tabBar.layer.borderColor = UIColor(named: "colorText1")?.cgColor
-        self.tabBarController?.tabBar.clipsToBounds = true
-        //Apply Separator between tabs
-        let itemWidth = floor(self.tabBarController!.tabBar.frame.size.width / CGFloat(self.tabBarController!.tabBar.items!.count))
-        let separatorWidth: CGFloat = 0.5
-        let separator = UIView(frame: CGRect(x: itemWidth * CGFloat(1) - CGFloat(separatorWidth / 2), y: 0, width: CGFloat(separatorWidth), height: self.tabBarController!.tabBar.frame.size.height))
-        separator.backgroundColor = UIColor(named: "colorText1")
-        self.tabBarController!.tabBar.addSubview(separator)
-        
-        // Apply NavBar controller
-        let appearance = UINavigationBarAppearance()
-        // This will change the navigation bar background color
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor =  UIColor(named: "colorMain1")
-        // This will alter the navigation bar title appearance
-        appearance.titleTextAttributes = [NSAttributedString.Key.font:  UIFont.systemFont(ofSize: 18, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.init(named: "colorText1") as Any]
-
-        self.navigationController?.navigationBar.standardAppearance = appearance
-        self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
- 
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "colorText1")
 
+        //Apply TableView controller
+        self.tableView.backgroundColor = UIColor(named: "colorMain2")
+        self.tableView.separatorColor = UIColor(named: "colorText1")
     }
-    
     
     //Protocolo Tabla
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
