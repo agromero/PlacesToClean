@@ -11,6 +11,17 @@ import UIKit
 
 class ManagerPlaces {
 
+    //PlacesType Name
+    let listItemType = [
+        NSLocalizedString("pvElem1", comment: ""),
+        NSLocalizedString("pvElem2", comment: ""),
+        NSLocalizedString("pvElem3", comment: ""),
+        NSLocalizedString("pvElem4", comment: ""),
+        NSLocalizedString("pvElem5", comment: ""),
+        NSLocalizedString("pvElem6", comment: ""),
+        NSLocalizedString("pvElem7", comment: ""),
+        NSLocalizedString("pvElem8", comment: "")]
+
     var places: [PTC] = []
     
     
@@ -20,7 +31,6 @@ class ManagerPlaces {
     static var shared = ManagerPlaces()
     //******************************
 
-    var reload: (() -> Void)?
     
     init() {
         loadData()
@@ -32,7 +42,6 @@ class ManagerPlaces {
         
         guard let data = fetchRecordsForEntity("PTC", inManagedObjectContext: context) as? [PTC] else { return }
         self.places = data
-        reload?()
     }
     
     private func fetchRecordsForEntity(_ entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> [NSManagedObject] {
@@ -57,8 +66,8 @@ class ManagerPlaces {
         return result
     }
    
-    func GetItemById(id: Int32) -> PTC {
-        places.filter( { $0.id == id})[0]
+    func GetItemById(id: Int32) -> PTC? {
+        places.first( where: { $0.id == id})
     }
 }
 

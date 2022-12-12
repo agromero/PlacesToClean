@@ -1,0 +1,23 @@
+//TabBar
+"list" = "List";
+"map" = "Map";
+//Picker
+"pvElem1" = "General";
+"pvElem2" = "Sidewalk";
+"pvElem3" = "Grafitti/Paint";
+"pvElem4" = "Window";
+"pvElem5" = "Furniture";
+"pvElem6" = "Debris";
+"pvElem7" = "Litter";
+"pvElem8" = "Weeding";
+//DetailView
+"cancel" = "Cancel";
+"save" = "Save";
+"name" = "Place";
+"namePlaceholder" = "Enter place name here";
+"desc" = "To Do";
+"descPlaceholder" = "Enter To Do here";
+"addImage" = "Add Image";
+"changeImage" = "Change Image";
+"takePhoto" = "Take Photo";
+"selectImage" = "Select Image";

@@ -232,8 +232,8 @@
                                                     <action selector="selectImage:" destination="9lU-Yw-Fpu" eventType="touchDown" id="xS2-35-6HO"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxW-O7-blQ">
-                                                <rect key="frame" x="42" y="210" width="48.666666666666657" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxW-O7-blQ">
+                                                <rect key="frame" x="41.999999999999993" y="210" width="87.333333333333314" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -306,6 +306,8 @@
                         <outlet property="btnSave" destination="fTT-HD-mdu" id="jXf-wD-wHU"/>
                         <outlet property="constraintHeight" destination="CaE-vk-Cez" id="XjH-Ow-AMZ"/>
                         <outlet property="imagePicked" destination="3iE-cP-3os" id="2tu-go-pIJ"/>
+                        <outlet property="labelDescription" destination="fxW-O7-blQ" id="OgD-ks-sNt"/>
+                        <outlet property="labelName" destination="L1A-6e-0E1" id="mEs-Lc-P5O"/>
                         <outlet property="scrollView" destination="DUn-5I-Hsg" id="fsc-Vp-eLc"/>
                         <outlet property="scrollViewInnerView" destination="4q4-aQ-0cL" id="wR7-5A-MpJ"/>
                         <outlet property="textDescription" destination="4LX-eV-bPe" id="Kkv-uT-T4c"/>

@@ -16,60 +16,67 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
 
     @IBOutlet weak var viewPicker: UIPickerView!
     @IBOutlet weak var imagePicked: UIImageView!
+ 
+    @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var textName: UITextField!
+    @IBOutlet weak var labelDescription: UILabel!
     @IBOutlet weak var textDescription: UITextView!
-
+        
     @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var btnDelete: UIButton!
     @IBOutlet weak var btnSave: UIButton!
-    //@IBOutlet weak var btnPhoto: UIButton!
     @IBOutlet weak var btnImage: UIButton!
 
     var keyboardHeight:CGFloat!
     var activeField: UIView!
     var lastOffset:CGPoint!
+    var editMode:Int!
     
     var place: PTC? = nil
     
-    var handler: (() -> Void)?
-    
-    // Places types english
-    //let pickerElems1 = ["General", "Sidewalk", "Grafitti/Pintura", "Window", "Furniture", "Debris", "Litter", "Weeding"]
-    // Places types spanish
-    let pickerElems1 = ["General", "Aceras", "Grafitti/Pintura", "Cristales", "Mobiliario", "Escombros", "Basura", "Maleza"]
-    
+   
     let m_location_manager: ManagerLocation = ManagerLocation.shared()
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        labelName.text = NSLocalizedString("name", comment: "")
+        labelDescription.text = NSLocalizedString("desc", comment: "")
+
         //Sempre mostrem el Picker
         viewPicker.delegate = self
         viewPicker.dataSource = self
-
-        btnCancel.setTitle("Cancel", for: .normal)
-        btnCancel.setTitle("Cancel", for: .highlighted)
+        
+        btnCancel.setTitle(NSLocalizedString("cancel", comment: ""), for: .normal)
+        btnCancel.setTitle(NSLocalizedString("cancel", comment: ""), for: .highlighted)
         btnDelete.setImage(UIImage(named: "trash.fill"), for: .normal)
         
-        btnSave.setTitle("Save", for: .normal)
-        btnSave.setTitle("Save", for: .highlighted)
-        //btnPhoto.setTitle("Take Picture", for: .normal)
-        //btnPhoto.setTitle("Take Picture", for: .highlighted)
+        btnSave.setTitle(NSLocalizedString("save", comment: ""), for: .normal)
+        btnSave.setTitle(NSLocalizedString("save", comment: ""), for: .highlighted)
         
         if place == nil {
             //Cuando es un nuevo place (CREATE), mostramos:
-            btnImage.setTitle("Add Image", for: .normal)
-            btnImage.setTitle("Add Image", for: .highlighted)
+            btnImage.setTitle(NSLocalizedString("addImage", comment: ""), for: .normal)
+            btnImage.setTitle(NSLocalizedString("addImage", comment: ""), for: .highlighted)
             
             //Ocultamos el botón Delete
             btnDelete.isHidden = true
+
+            //Mostramos el PickerView con la fila seleccionada
+            viewPicker.selectRow(0, inComponent: 0, animated: false)
+
+            editMode = 0
             creationMode()
         } else{
             //Cuando es un place ya existente (UPDATE), mostramos:
-            btnImage.setTitle("Change Image", for: .normal)
-            btnImage.setTitle("Change Image", for: .highlighted)
+            btnImage.setTitle(NSLocalizedString("changeImage", comment: ""), for: .normal)
+            btnImage.setTitle(NSLocalizedString("changeImage", comment: ""), for: .highlighted)
+            
+            //Mostramos el PickerView con la fila seleccionada
+            viewPicker.selectRow(Int(place!.type), inComponent: 0, animated: false)
+            
+            editMode = 1
             updateMode()
         }
 
@@ -90,10 +97,6 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
         btnCancel.setTitleColor(UIColor(named: "colorText1"), for: .normal)
         btnDelete.tintColor = (UIColor(named: "colorText1"))
         btnSave.setTitleColor(UIColor(named: "colorText1"), for: .normal)
-        
-        //btnPhoto.layer.cornerRadius = 10.0
-        //btnPhoto.backgroundColor = UIColor(named: "colorMain1")
-        //btnPhoto.setTitleColor(UIColor(named: "colorText1"), for: .normal)
 
         btnImage.layer.cornerRadius = 10.0
         btnImage.backgroundColor = UIColor(named: "colorMain1")
@@ -120,7 +123,8 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
     }
         
     fileprivate func updateMode() {
-         //Mostramos el Place existente
+     
+        //Mostramos el Place existente
         textName.text = place!.title
         textDescription.text = place!.desc
 
@@ -130,39 +134,24 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
     }
     
     fileprivate func creationMode() {
+
         //Creamos un nuevo Place
-        //textName.placeholder = "Enter Title here"
         textName.attributedPlaceholder = NSAttributedString(
-            string: "  Enter Title here",
+            string: NSLocalizedString("namePlaceholder", comment: ""),
             attributes:[
                     NSAttributedString.Key.foregroundColor: UIColor(named: "colorText1")!,
                     NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)
                 ])
-        textDescription.text = "Enter Description here"
-
+        textDescription.text = NSLocalizedString("descPlaceholder", comment: "")
     }
     
-    /*
-    @IBAction func selectImage(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary;
-        imagePicker.allowsEditing = false
-        self.present(imagePicker, animated: true, completion: nil)
-    }
-
-    @IBAction func takePhoto(_ sender: Any){
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera;
-        imagePicker.allowsEditing = false
-        self.present(imagePicker, animated: true, completion: nil)
-    }
-*/
     
     func initImgMenu() {
-        // Do any additional setup after loading the view.
-        let pictureItem = UIAction(title: "Take Photo", image: UIImage(systemName: "camera.fill")) { (action) in
+        // Do any additional setup after lActionoading the view.
+        let takePhoto = NSLocalizedString("takePhoto", comment: "")
+        let selectImage = NSLocalizedString("selectImage", comment: "")
+
+        let pictureItem = UIAction(title: takePhoto, image: UIImage(systemName: "camera.fill")) { (action) in
              print("Users action was tapped")
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
@@ -171,7 +160,7 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
             self.present(imagePicker, animated: true, completion: nil)
         }
         
-        let imageItem = UIAction(title: "Select Image", image: UIImage(systemName: "photo.on.rectangle")) { (action) in
+        let imageItem = UIAction(title: selectImage, image: UIImage(systemName: "photo.on.rectangle")) { (action) in
             print("Add User action was tapped")
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
@@ -210,12 +199,12 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
     {
-        return pickerElems1.count
+        return ManagerPlaces.shared.listItemType.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
     {
-        return pickerElems1[row]
+        return NSLocalizedString( ManagerPlaces.shared.listItemType[row], comment: "")
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -223,7 +212,7 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let labelData = pickerElems1[row]
+        let labelData = NSLocalizedString( ManagerPlaces.shared.listItemType[row], comment: "")
         let myTitle = NSAttributedString(string: labelData, attributes: [NSAttributedString.Key.foregroundColor:UIColor(named: "colorText1")!])
          return myTitle
      }
@@ -334,7 +323,7 @@ extension DetailController {
         {
             try context.save()
             dismiss(animated: true)
-            handler?()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
             print("context delete succesfully")
         }
         catch
@@ -346,13 +335,13 @@ extension DetailController {
     func saveData() {
         let name = textName.text
         let descripcion = textDescription.text
-        
         let selectedtype = viewPicker.selectedRow(inComponent: 0)
         let imgdata = imagePicked.image?.jpegData(compressionQuality: 0.75)
-        
         let localizationLatitude = ManagerLocation.shared().GetLocation().latitude
         let localizationLongitude = ManagerLocation.shared().GetLocation().longitude
-        
+
+
+
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
         
@@ -370,16 +359,20 @@ extension DetailController {
         objectToSave?.desc = descripcion
         objectToSave?.type = Int16(selectedtype)
         objectToSave?.image = imgdata
-        objectToSave?.longitude = localizationLongitude
-        objectToSave?.latitude = localizationLatitude
         
+        //Si estamos en modo Update no actualizamos ubiación
+        if editMode==1 {
+            objectToSave?.longitude = localizationLongitude
+            objectToSave?.latitude = localizationLatitude
+        }
+
         print("new object location id \(objectToSave?.id ?? 0) long \(localizationLongitude) lat \(localizationLatitude)")
         
         do
         {
             try context.save()
             dismiss(animated: true)
-            handler?()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
             print("context save succesfully")
         }
         catch
@@ -388,7 +381,6 @@ extension DetailController {
         }
     }
     
-
 
 }
 

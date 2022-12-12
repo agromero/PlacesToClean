@@ -20,7 +20,7 @@ class Place {
         case Litter
         case Weeding
     }
-    
+
     var id:String = ""
     var type:PlacesTypes = .General
     var name:String = ""

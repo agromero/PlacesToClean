@@ -1,0 +1,23 @@
+//TabBar
+"list" = "Lista";
+"map" = "Mapa";
+//Picker
+"pvElem1" = "General";
+"pvElem2" = "Aceras";
+"pvElem3" = "Grafitti/Pintura";
+"pvElem4" = "Cristales";
+"pvElem5" = "Mobiliario";
+"pvElem6" = "Escombros";
+"pvElem7" = "Basura";
+"pvElem8" = "Maleza";
+//DetailView
+"cancel" = "Cancelar";
+"save" = "Guardar";
+"name" = "Lugar";
+"namePlaceholder" = "Aqui el nombre del lugar";
+"desc" = "Actuación";
+"descPlaceholder" = "Aqui las tareas a realizar";
+"addImage" = "Añadir Imagen";
+"changeImage" = "Cambiar Imagen";
+"takePhoto" = "Tomar Foto";
+"selectImage" = "Seleccionar Imagen";

@@ -21,13 +21,28 @@ class FirstViewController: UITableViewController {
         view.dataSource = self
         
         // nos subscribimos al reload
-        m_places_manager.reload = {
-            self.onPlacesChange()
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadView), name: NSNotification.Name(rawValue: "reload"), object: nil)
 
+        addNavBarImage()    
         applyTheme()
     }
-        
+
+    func addNavBarImage() {
+
+        let imageView = UIImageView(frame: CGRect(x: 300, y: 0, width: 400, height: 150))
+        imageView.contentMode = .scaleAspectFit
+
+        let logo = UIImage(named: "navBarLogo")
+        imageView.image = logo
+        navigationItem.titleView = imageView
+ }
+    
+    
+    @objc
+    func reloadView(notif: NSNotification) {
+        onPlacesChange()
+    }
+    
     func applyTheme() {
         ThemeManager.applyTabControllerTheme(self.tabBarController)
         ThemeManager.applyNavBarControllerTheme(self.navigationController)
@@ -64,12 +79,13 @@ class FirstViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let celda = tableView.dequeueReusableCell(withIdentifier: "PlaceCell", for: indexPath) as? PlaceCell else { return UITableViewCell() }
 
-        let listItemType = ["General", "Aceras", "Grafitti/Pintura", "Cristales", "Mobiliario", "Escombros", "Basura", "Maleza"]
         
         let place = m_places_manager.places[indexPath.row]
         
         celda.placeTitleLabel.text = place.title
-        celda.placeSubtitleLabel.text = listItemType[Int(place.type)]
+        
+        let typeName = NSLocalizedString(ManagerPlaces.shared.listItemType[Int(place.type)], comment: "")
+        celda.placeSubtitleLabel.text = typeName
         celda.applyTheme()
         
         if let image = place.image {
@@ -82,8 +98,8 @@ class FirstViewController: UITableViewController {
         
     }
     
-   
     func onPlacesChange() {
+        ManagerPlaces.shared.loadData()
         let view: UITableView = (self.view as? UITableView)!
         view.reloadData()
     }
@@ -91,10 +107,7 @@ class FirstViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
         if segue.identifier == "goToDetails",
            let viewController = segue.destination as? DetailController {
-            viewController.place = sender as? PTC
-            viewController.handler = {
-                self.m_places_manager.loadData()
-            }
+            viewController.place = sender as? PTC            
         }
     }
 }
