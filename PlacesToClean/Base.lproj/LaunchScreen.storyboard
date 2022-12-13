@@ -19,13 +19,21 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="VMQ-se-eef">
                                 <rect key="frame" x="0.0" y="47" width="390" height="797"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© Agustí Romero 2022" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAp-3e-HpE">
+                                <rect key="frame" x="121" y="731" width="148" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.015495415780000001" green="0.20796266199999999" blue="0.00092638761269999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gAp-3e-HpE" secondAttribute="bottom" constant="62" id="04r-Fw-JVD"/>
                             <constraint firstAttribute="trailing" secondItem="VMQ-se-eef" secondAttribute="trailing" id="3Li-fp-fUe"/>
                             <constraint firstItem="VMQ-se-eef" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="9WM-xZ-kEr"/>
                             <constraint firstAttribute="bottom" secondItem="VMQ-se-eef" secondAttribute="bottom" id="9Ym-pa-e3k"/>
+                            <constraint firstItem="gAp-3e-HpE" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="pUl-6D-Yhc"/>
                             <constraint firstItem="VMQ-se-eef" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qXt-4y-ePi"/>
                         </constraints>
                     </view>

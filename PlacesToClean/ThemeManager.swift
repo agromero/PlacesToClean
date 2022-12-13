@@ -13,10 +13,12 @@ class ThemeManager {
         tabController?.tabBar.items?[0].title = NSLocalizedString("list", comment: "")
         tabController?.tabBar.items?[1].title = NSLocalizedString("map", comment: "")
         
+        tabController?.tabBar.isOpaque = false
         tabController?.tabBar.barTintColor =  UIColor(named: "colorMain2") // Color Fondo
-        tabController?.tabBar.isOpaque = true
-        tabController?.tabBar.tintColor = UIColor(named: "colorText1") // Color Activo
-        tabController?.tabBar.unselectedItemTintColor = UIColor(named: "colorText2") // Color inactivo
+        
+        // TabBar Items colors
+        tabController?.tabBar.tintColor = UIColor(named: "colorText1") // Color Item Activo
+        tabController?.tabBar.unselectedItemTintColor = UIColor(named: "colorText2") // Color Item inactivo
     }
     
     static func applyNavBarControllerTheme(_ navController: UINavigationController?){

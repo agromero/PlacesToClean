@@ -21,3 +21,9 @@
 "changeImage" = "Cambiar Imagen";
 "takePhoto" = "Tomar Foto";
 "selectImage" = "Seleccionar Imagen";
+//Map
+"distance" = "Distancia:";
+//Notifications
+"contentTitle" = "Notificación de Proximidad";
+"contentSubtitle" = "Estas acercándote a un Place";
+"contentBody" = "Mira la descripción del place para más información";

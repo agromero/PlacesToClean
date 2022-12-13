@@ -37,7 +37,6 @@ class FirstViewController: UITableViewController {
         navigationItem.titleView = imageView
  }
     
-    
     @objc
     func reloadView(notif: NSNotification) {
         onPlacesChange()
@@ -50,7 +49,9 @@ class FirstViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "colorText1")
 
         //Apply TableView controller
-        self.tableView.backgroundColor = UIColor(named: "colorMain2")
+        self.tableView.backgroundColor = UIColor(named: "colorMain1")
+        
+        self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
         self.tableView.separatorColor = UIColor(named: "colorText1")
     }
     
@@ -79,7 +80,6 @@ class FirstViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let celda = tableView.dequeueReusableCell(withIdentifier: "PlaceCell", for: indexPath) as? PlaceCell else { return UITableViewCell() }
 
-        
         let place = m_places_manager.places[indexPath.row]
         
         celda.placeTitleLabel.text = place.title

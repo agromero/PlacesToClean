@@ -21,7 +21,6 @@ class PlaceAnnotation: NSObject, MKAnnotation {
     }
 }
 
-
 class SecondViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var m_map: MKMapView!
@@ -72,15 +71,13 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
             
             let title:String = item.title ?? ""
             let subtitle:String = item.description
-            //TEMP
-            let type:String = "Litter"
+            let type = "TYPE"
+            //NSLocalizedString(ManagerPlaces.shared.listItemType[i], comment: "")
             let img:Data = item.image!
             let id:String = "\(item.id)"
             let lat:Double = item.latitude
             let lon:Double = item.longitude
             
-            /*let annotation: MKMyPointAnnotation = MKMyPointAnnotation(coordinate:                                                                        CLLocationCoordinate2D(latitude: lat, longitude: lon), title: title, place_id: id)
-*/
             let annotation: MKMyPointAnnotation = MKMyPointAnnotation(coordinate:
                 CLLocationCoordinate2D(latitude: lat, longitude: lon), title: title, subtitle: subtitle, type: type, img: img, place_id: id)
   
@@ -115,34 +112,27 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
 
                 // Left accessory
 	            var pinImage = annotation.img
-                
-                //Thumbnail Border
-/*              self.placeImageView.layer.borderWidth = 2
-                self.placeImageView.layer.cornerRadius = 5.0
-                self.placeImageView.contentMode = UIView.ContentMode.scaleToFill
-                self.placeImageView.layer.borderColor = UIColor(named: "colorGrey")?.cgColor
-                */
-                
+               
                 //Creamos un botón en la imagen
                 let pinButton = UIButton(type: .custom)
                 pinButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
                 pinButton.setImage(pinImage, for: UIControl.State())
-
+                
                 // Right Accessory
                 let pinAccessory = UITextView(frame: CGRect(x: 0,y: 0,width: 50,height: 40))
-                pinAccessory.backgroundColor = UIColor.black
+                pinAccessory.allowsEditingTextAttributes = false
+                pinAccessory.backgroundColor = UIColor.clear
                 pinAccessory.text = annotation.type
                 pinAccessory.textAlignment = .center
                 pinAccessory.font = UIFont(name: "HelveticaNeue", size: 10)
-                pinAccessory.textColor = .lightGray
+                pinAccessory.textColor = UIColor(named: "colorText1")
 
                 //Draw Pin Annotation
-                annotationView.image = UIImage(named:"purplepin")
+                annotationView.image = UIImage(named:"greenpin")
                 annotationView.canShowCallout = true
                 annotationView.calloutOffset = CGPoint(x: -5, y: 5)
                 annotationView.leftCalloutAccessoryView = pinButton
                 annotationView.rightCalloutAccessoryView = pinAccessory
-                
                 annotation.subtitle = pinType
             }
             return annotationView
@@ -165,7 +155,8 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
                 let current_loc = CLLocation(latitude: current_loc_tmp.latitude, longitude: current_loc_tmp.longitude)
                 let obj_loc:CLLocation = CLLocation(latitude: annotation.coordinate.latitude,longitude: annotation.coordinate.longitude)
                 let distance:CLLocationDistance = (current_loc.distance(from: obj_loc))
-                annotation.subtitle = String(format: "distance: %.2f m", distance)
+                let dist = NSLocalizedString("distance", comment: "") + " %.2f m"
+                annotation.subtitle = String(format: dist, distance)
             }
             
             for v in view.subviews {

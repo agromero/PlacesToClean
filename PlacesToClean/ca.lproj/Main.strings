@@ -1,0 +1,48 @@
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "4LX-eV-bPe"; */
+"4LX-eV-bPe.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Byt-5Z-O7c"; */
+"Byt-5Z-O7c.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Place"; ObjectID = "L1A-6e-0E1"; */
+"L1A-6e-0E1.text" = "Place";
+
+/* Class = "UIButton"; configuration.title = "Cancel"; ObjectID = "MaF-z0-fsg"; */
+"MaF-z0-fsg.configuration.title" = "Cancel";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "MaF-z0-fsg"; */
+"MaF-z0-fsg.normalTitle" = "Button";
+
+/* Class = "UITabBarItem"; title = "List"; ObjectID = "OGh-vl-P9l"; */
+"OGh-vl-P9l.title" = "List";
+
+/* Class = "UITabBarItem"; title = "Map"; ObjectID = "RBM-pq-lzY"; */
+"RBM-pq-lzY.title" = "Map";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "X2F-6G-Tm9"; */
+"X2F-6G-Tm9.text" = "Title";
+
+/* Class = "UIButton"; configuration.title = "Select Image"; ObjectID = "dBF-76-4bv"; */
+"dBF-76-4bv.configuration.title" = "Select Image";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "dBF-76-4bv"; */
+"dBF-76-4bv.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Save"; ObjectID = "fTT-HD-mdu"; */
+"fTT-HD-mdu.configuration.title" = "Save";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "fTT-HD-mdu"; */
+"fTT-HD-mdu.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "fxW-O7-blQ"; */
+"fxW-O7-blQ.text" = "Description";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "mTz-id-nru"; */
+"mTz-id-nru.text" = "Subtitle";
+
+/* Class = "UINavigationItem"; title = "PlacesToClean"; ObjectID = "r6e-xY-m5o"; */
+"r6e-xY-m5o.title" = "PlacesToClean";
+
+/* Class = "UINavigationItem"; title = "PlacesToClean"; ObjectID = "scr-YO-w65"; */
+"scr-YO-w65.title" = "PlacesToClean";
