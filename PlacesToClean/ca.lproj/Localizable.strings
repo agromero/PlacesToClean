@@ -1,29 +1,29 @@
 //TabBar
-"list" = "List";
-"map" = "Map";
+"list" = "Llista";
+"map" = "Mapa";
 //Picker
 "pvElem1" = "General";
-"pvElem2" = "Sidewalk";
-"pvElem3" = "Grafitti/Paint";
-"pvElem4" = "Window";
-"pvElem5" = "Furniture";
-"pvElem6" = "Debris";
-"pvElem7" = "Litter";
-"pvElem8" = "Weeding";
+"pvElem2" = "Voreres";
+"pvElem3" = "Grafitti / Pintura";
+"pvElem4" = "Vidres";
+"pvElem5" = "Mobiliari";
+"pvElem6" = "Runes";
+"pvElem7" = "Escombraries";
+"pvElem8" = "Males herbes";
 //DetailView
-"cancel" = "Cancel";
-"save" = "Save";
-"name" = "Place";
-"namePlaceholder" = "Enter place name here";
-"desc" = "To Do";
-"descPlaceholder" = "Enter To Do here";
-"addImage" = "Add Image";
-"changeImage" = "Change Image";
-"takePhoto" = "Take Photo";
-"selectImage" = "Select Image";
+"cancel" = "Cancel·lar";
+"save" = "Desar";
+"name" = "Lloc";
+"namePlaceholder" = "Aqui el nom del lloc";
+"desc" = "Actuació";
+"descPlaceholder" = "Aqui les tasques a realitzar";
+"addImage" = "Afegir Imatge";
+"changeImage" = "Canviar Imatge";
+"takePhoto" = "Fer Foto";
+"selectImage" = "Seleccionar Imatge";
 //Map
-"distance" = "Distance:";
+"distance" = "Distància:";
 //Notifications
-"contentTitle" = "Nearby Notification";
-"contentSubtitle" = "You're reaching a Place To Clean";
-"contentBody" = "See place description for more information";
+"contentTitle" = "Notificació de Proximitat";
+"contentSubtitle" = "Estas aprop d'un lloc per a netejar";
+"contentBody" = "Mira la descripció del place per a més informació";

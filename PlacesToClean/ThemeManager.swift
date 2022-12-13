@@ -35,7 +35,7 @@ class ThemeManager {
         navController?.navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "colorText1")
         navController?.navigationController?.navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "colorText1")
     }
-    
+
 }
 
 

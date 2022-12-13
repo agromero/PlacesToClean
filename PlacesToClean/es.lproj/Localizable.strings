@@ -4,7 +4,7 @@
 //Picker
 "pvElem1" = "General";
 "pvElem2" = "Aceras";
-"pvElem3" = "Grafitti/Pintura";
+"pvElem3" = "Grafitti / Pintura";
 "pvElem4" = "Cristales";
 "pvElem5" = "Mobiliario";
 "pvElem6" = "Escombros";
@@ -25,5 +25,5 @@
 "distance" = "Distancia:";
 //Notifications
 "contentTitle" = "Notificación de Proximidad";
-"contentSubtitle" = "Estas acercándote a un Place";
+"contentSubtitle" = "Estas cerca de un Lugar para limpiar";
 "contentBody" = "Mira la descripción del place para más información";

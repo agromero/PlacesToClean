@@ -42,8 +42,17 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
         print ("Reload Map1")
         AddMarkers()
         
+        addNavBarImage()
         applyTheme()
     }
+
+    func addNavBarImage() {
+        let logo = UIImage(named: "navBarLogo")
+        let imageView = UIImageView(frame: CGRect(x: 300, y: 0, width: 400, height: 150))
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = logo
+        navigationItem.titleView = imageView
+ }
     
     @objc func reloadView() {
         print ("Reload Map2")
@@ -110,30 +119,37 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
                 let place = m_places_manager.GetItemById(id: Int32(annotation.place_id) ?? 0)
                 var pinType = "" // Default value
 
-                // Left accessory
-	            var pinImage = annotation.img
-               
-                //Creamos un botón en la imagen
-                let pinButton = UIButton(type: .custom)
-                pinButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-                pinButton.setImage(pinImage, for: UIControl.State())
-                
-                // Right Accessory
-                let pinAccessory = UITextView(frame: CGRect(x: 0,y: 0,width: 50,height: 40))
-                pinAccessory.allowsEditingTextAttributes = false
-                pinAccessory.backgroundColor = UIColor.clear
-                pinAccessory.text = annotation.type
-                pinAccessory.textAlignment = .center
-                pinAccessory.font = UIFont(name: "HelveticaNeue", size: 10)
-                pinAccessory.textColor = UIColor(named: "colorText1")
+                //Calculamos la distancia entre el place y nuestra ubicación
+                let current_loc_tmp:CLLocationCoordinate2D  = self.m_location_manager.GetLocation()
+                let current_loc = CLLocation(latitude: current_loc_tmp.latitude, longitude: current_loc_tmp.longitude)
+                let obj_loc:CLLocation = CLLocation(latitude: annotation.coordinate.latitude,longitude: annotation.coordinate.longitude)
+                let distance:CLLocationDistance = (current_loc.distance(from: obj_loc))
+                let dist = NSLocalizedString("distance", comment: "") + " %.2f m"
 
+                // Left accessory
+	            var accesoryImage = annotation.img
+                //Creamos un botón en la imagen
+                let leftAccessory = UIButton(type: .custom)
+                leftAccessory.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+                leftAccessory.setImage(accesoryImage, for: UIControl.State())
+
+                // Right Accessory
+                let rightAccessory = UITextView(frame: CGRect(x: 0,y: 0,width: 50,height: 40))
+                rightAccessory.allowsEditingTextAttributes = false
+                rightAccessory.backgroundColor = UIColor.clear
+                rightAccessory.text = annotation.type
+                rightAccessory.textAlignment = .center
+                rightAccessory.font = UIFont(name: "HelveticaNeue", size: 10)
+                rightAccessory.textColor = UIColor(named: "colorText1")
+              
                 //Draw Pin Annotation
                 annotationView.image = UIImage(named:"greenpin")
                 annotationView.canShowCallout = true
                 annotationView.calloutOffset = CGPoint(x: -5, y: 5)
-                annotationView.leftCalloutAccessoryView = pinButton
-                annotationView.rightCalloutAccessoryView = pinAccessory
-                annotation.subtitle = pinType
+                annotationView.leftCalloutAccessoryView = leftAccessory
+                annotation.title = place?.title
+                annotation.subtitle = String(format: dist, distance)
+                annotationView.rightCalloutAccessoryView = rightAccessory
             }
             return annotationView
         }
@@ -149,19 +165,10 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
         {
             print("Place seleccionado == \(String(describing: view.annotation?.title!))")
             
-            if(self.m_location_manager.GetLocation() != nil){
-                let annotation:MKMyPointAnnotation  = view.annotation as! MKMyPointAnnotation
-                let current_loc_tmp:CLLocationCoordinate2D  = self.m_location_manager.GetLocation()
-                let current_loc = CLLocation(latitude: current_loc_tmp.latitude, longitude: current_loc_tmp.longitude)
-                let obj_loc:CLLocation = CLLocation(latitude: annotation.coordinate.latitude,longitude: annotation.coordinate.longitude)
-                let distance:CLLocationDistance = (current_loc.distance(from: obj_loc))
-                let dist = NSLocalizedString("distance", comment: "") + " %.2f m"
-                annotation.subtitle = String(format: dist, distance)
-            }
-            
             for v in view.subviews {
                 if v.subviews.count > 0 {
-                    v.subviews[0].backgroundColor = UIColor.systemGray
+                    //Annotation background color
+                    v.subviews[0].backgroundColor = UIColor(named: "colorMain2")
                     v.subviews[0].alpha = 0.8
                 }
             }
@@ -196,7 +203,9 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
     func ReplaceColorText(v:UIView){
 
         for subview in v.subviews {
+
             if((subview as? UILabel) != nil) {
+                //Annotation Text Color
                 (subview as? UILabel)?.textColor = UIColor(named: "colorText1")
             }
             else

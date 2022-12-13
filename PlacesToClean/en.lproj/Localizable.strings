@@ -4,7 +4,7 @@
 //Picker
 "pvElem1" = "General";
 "pvElem2" = "Sidewalk";
-"pvElem3" = "Grafitti/Paint";
+"pvElem3" = "Grafitti / Paint";
 "pvElem4" = "Window";
 "pvElem5" = "Furniture";
 "pvElem6" = "Debris";
@@ -25,5 +25,5 @@
 "distance" = "Distance:";
 //Notifications
 "contentTitle" = "Nearby Notification";
-"contentSubtitle" = "You're reaching a Place To Clean";
+"contentSubtitle" = "You're near a Place to clean";
 "contentBody" = "See place description for more information";

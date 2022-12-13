@@ -28,11 +28,9 @@ class FirstViewController: UITableViewController {
     }
 
     func addNavBarImage() {
-
+        let logo = UIImage(named: "navBarLogo")
         let imageView = UIImageView(frame: CGRect(x: 300, y: 0, width: 400, height: 150))
         imageView.contentMode = .scaleAspectFit
-
-        let logo = UIImage(named: "navBarLogo")
         imageView.image = logo
         navigationItem.titleView = imageView
  }
@@ -50,7 +48,6 @@ class FirstViewController: UITableViewController {
 
         //Apply TableView controller
         self.tableView.backgroundColor = UIColor(named: "colorMain1")
-        
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
         self.tableView.separatorColor = UIColor(named: "colorText1")
     }
@@ -67,6 +64,9 @@ class FirstViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Deseleccionamos el elemento pulsado
+        tableView.deselectRow(at: indexPath, animated: true)
+
         // Detectar pulsación en un elemento.
         let place = m_places_manager.places[indexPath.row]
         performSegue(withIdentifier: "goToDetails", sender: place)

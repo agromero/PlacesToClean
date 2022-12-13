@@ -340,8 +340,6 @@ extension DetailController {
         let localizationLatitude = ManagerLocation.shared().GetLocation().latitude
         let localizationLongitude = ManagerLocation.shared().GetLocation().longitude
 
-
-
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
         
@@ -361,7 +359,7 @@ extension DetailController {
         objectToSave?.image = imgdata
         
         //Si estamos en modo Update no actualizamos ubiación
-        if editMode==1 {
+        if editMode==0 {
             objectToSave?.longitude = localizationLongitude
             objectToSave?.latitude = localizationLatitude
         }
