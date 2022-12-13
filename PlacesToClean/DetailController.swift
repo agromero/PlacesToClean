@@ -352,7 +352,6 @@ extension DetailController {
             objectToSave = place
         }
         
-        objectToSave?.id = Int32(Date().timeIntervalSince1970)
         objectToSave?.title = name
         objectToSave?.desc = descripcion
         objectToSave?.type = Int16(selectedtype)
@@ -360,6 +359,7 @@ extension DetailController {
         
         //Si estamos en modo Update no actualizamos ubiación
         if editMode==0 {
+            objectToSave?.id = Int32(Date().timeIntervalSince1970)
             objectToSave?.longitude = localizationLongitude
             objectToSave?.latitude = localizationLatitude
         }

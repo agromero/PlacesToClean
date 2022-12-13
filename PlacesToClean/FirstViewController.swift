@@ -22,18 +22,9 @@ class FirstViewController: UITableViewController {
         
         // nos subscribimos al reload
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadView), name: NSNotification.Name(rawValue: "reload"), object: nil)
-
-        addNavBarImage()    
+           
         applyTheme()
     }
-
-    func addNavBarImage() {
-        let logo = UIImage(named: "navBarLogo")
-        let imageView = UIImageView(frame: CGRect(x: 300, y: 0, width: 400, height: 150))
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = logo
-        navigationItem.titleView = imageView
- }
     
     @objc
     func reloadView(notif: NSNotification) {
@@ -42,7 +33,7 @@ class FirstViewController: UITableViewController {
     
     func applyTheme() {
         ThemeManager.applyTabControllerTheme(self.tabBarController)
-        ThemeManager.applyNavBarControllerTheme(self.navigationController)
+        ThemeManager.applyNavBarControllerTheme(self.navigationController, navigationItem)
 
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "colorText1")
 

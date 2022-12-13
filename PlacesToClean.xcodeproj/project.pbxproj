@@ -21,7 +21,6 @@
 		7FA95CB129337B2F003C973F /* PTC+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA95CAF29337B2F003C973F /* PTC+CoreDataClass.swift */; };
 		7FA95CB229337B2F003C973F /* PTC+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA95CB029337B2F003C973F /* PTC+CoreDataProperties.swift */; };
 		7FEF16062945ED6600920F07 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7FEF16022945C29200920F07 /* Localizable.strings */; };
-		7FF5C671291C20E2000C5989 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF5C670291C20E2000C5989 /* Place.swift */; };
 		7FF5C673291C2446000C5989 /* ManagerPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF5C672291C2446000C5989 /* ManagerPlaces.swift */; };
 		7FF5C675291C29CC000C5989 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF5C674291C29CC000C5989 /* FirstViewController.swift */; };
 		7FF5C677291C29DF000C5989 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF5C676291C29DF000C5989 /* SecondViewController.swift */; };
@@ -48,7 +47,6 @@
 		7FEF15FF2945C24D00920F07 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		7FEF16012945C29200920F07 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7FEF16042945C7A200920F07 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		7FF5C670291C20E2000C5989 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		7FF5C672291C2446000C5989 /* ManagerPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerPlaces.swift; sourceTree = "<group>"; };
 		7FF5C674291C29CC000C5989 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		7FF5C676291C29DF000C5989 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
@@ -87,7 +85,6 @@
 				7FA95CAA293370AE003C973F /* Models */,
 				7F2AD7952911A45D00BE2A63 /* AppDelegate.swift */,
 				7F4AEE742911BA55000BCDD2 /* SceneDelegate.swift */,
-				7FF5C670291C20E2000C5989 /* Place.swift */,
 				7F6F4C0429269769008DDD08 /* PlaceCell.swift */,
 				7FF5C672291C2446000C5989 /* ManagerPlaces.swift */,
 				7F52A4FC29241D3A00EC71BD /* ManagerLocation.swift */,
@@ -190,7 +187,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FF5C677291C29DF000C5989 /* SecondViewController.swift in Sources */,
-				7FF5C671291C20E2000C5989 /* Place.swift in Sources */,
 				7FF5C673291C2446000C5989 /* ManagerPlaces.swift in Sources */,
 				7F2AD7AC2911A8F000BE2A63 /* DetailController.swift in Sources */,
 				7F52A4FD29241D3A00EC71BD /* ManagerLocation.swift in Sources */,

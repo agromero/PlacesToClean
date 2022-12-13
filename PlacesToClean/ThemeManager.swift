@@ -21,7 +21,7 @@ class ThemeManager {
         tabController?.tabBar.unselectedItemTintColor = UIColor(named: "colorText2") // Color Item inactivo
     }
     
-    static func applyNavBarControllerTheme(_ navController: UINavigationController?){
+    static func applyNavBarControllerTheme(_ navController: UINavigationController?, _ navigationItem: UINavigationItem?) {
         // Apply NavBar controller
         let appearance = UINavigationBarAppearance()
         // This will change the navigation bar background color
@@ -34,8 +34,18 @@ class ThemeManager {
         navController?.navigationBar.scrollEdgeAppearance = appearance
         navController?.navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "colorText1")
         navController?.navigationController?.navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "colorText1")
+        
+        addNavBarImage(navigationItem)
     }
 
+    static private func addNavBarImage(_ navigationItem: UINavigationItem?){
+        let logo = UIImage(named: "navBarLogo")
+        let imageView = UIImageView(frame: CGRect(x: 300, y: 0, width: 400, height: 150))
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = logo
+        navigationItem?.titleView = imageView
+    }
 }
+
 
 

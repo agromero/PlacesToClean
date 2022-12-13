@@ -42,18 +42,9 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
         print ("Reload Map1")
         AddMarkers()
         
-        addNavBarImage()
         applyTheme()
     }
 
-    func addNavBarImage() {
-        let logo = UIImage(named: "navBarLogo")
-        let imageView = UIImageView(frame: CGRect(x: 300, y: 0, width: 400, height: 150))
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = logo
-        navigationItem.titleView = imageView
- }
-    
     @objc func reloadView() {
         print ("Reload Map2")
         self.RemoveMarkers()
@@ -62,7 +53,7 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
     
     func applyTheme() {
         ThemeManager.applyTabControllerTheme(self.tabBarController)
-        ThemeManager.applyNavBarControllerTheme(self.navigationController)
+        ThemeManager.applyNavBarControllerTheme(self.navigationController, self.navigationItem)        
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "colorText1")
     }
     
@@ -74,14 +65,15 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
     
     func AddMarkers(){
         
+        print("Total de Places == \(m_places_manager.places.count)")
+
         for i in 0..<m_places_manager.places.count {
-            print (m_places_manager.places.count)
+
             let item = m_places_manager.places[i]
             
             let title:String = item.title ?? ""
             let subtitle:String = item.description
-            let type = "TYPE"
-            //NSLocalizedString(ManagerPlaces.shared.listItemType[i], comment: "")
+            let type:String = ManagerPlaces.shared.listItemType[Int(item.type)]
             let img:Data = item.image!
             let id:String = "\(item.id)"
             let lat:Double = item.latitude
@@ -97,7 +89,7 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?{
-
+        
         if annotation is MKUserLocation {
             return nil
         }
@@ -112,56 +104,55 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
             else
             {
                 annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier:identifier)
-                annotationView.canShowCallout = true
-                
-                //Localizamos el place para usar información
-                let place_id:String = annotation.place_id
-                let place = m_places_manager.GetItemById(id: Int32(annotation.place_id) ?? 0)
-                var pinType = "" // Default value
-
-                //Calculamos la distancia entre el place y nuestra ubicación
-                let current_loc_tmp:CLLocationCoordinate2D  = self.m_location_manager.GetLocation()
-                let current_loc = CLLocation(latitude: current_loc_tmp.latitude, longitude: current_loc_tmp.longitude)
-                let obj_loc:CLLocation = CLLocation(latitude: annotation.coordinate.latitude,longitude: annotation.coordinate.longitude)
-                let distance:CLLocationDistance = (current_loc.distance(from: obj_loc))
-                let dist = NSLocalizedString("distance", comment: "") + " %.2f m"
-
-                // Left accessory
-	            var accesoryImage = annotation.img
-                //Creamos un botón en la imagen
-                let leftAccessory = UIButton(type: .custom)
-                leftAccessory.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-                leftAccessory.setImage(accesoryImage, for: UIControl.State())
-
-                // Right Accessory
-                let rightAccessory = UITextView(frame: CGRect(x: 0,y: 0,width: 50,height: 40))
-                rightAccessory.allowsEditingTextAttributes = false
-                rightAccessory.backgroundColor = UIColor.clear
-                rightAccessory.text = annotation.type
-                rightAccessory.textAlignment = .center
-                rightAccessory.font = UIFont(name: "HelveticaNeue", size: 10)
-                rightAccessory.textColor = UIColor(named: "colorText1")
-              
-                //Draw Pin Annotation
-                annotationView.image = UIImage(named:"greenpin")
-                annotationView.canShowCallout = true
-                annotationView.calloutOffset = CGPoint(x: -5, y: 5)
-                annotationView.leftCalloutAccessoryView = leftAccessory
-                annotation.title = place?.title
-                annotation.subtitle = String(format: dist, distance)
-                annotationView.rightCalloutAccessoryView = rightAccessory
             }
+            annotationView.canShowCallout = true
+            
+            //Localizamos el place para usar información
+            let place = m_places_manager.GetItemById(id: Int32(annotation.place_id) ?? 0)
+            
+            //Calculamos la distancia entre el place y nuestra ubicación
+            let current_loc_tmp:CLLocationCoordinate2D  = self.m_location_manager.GetLocation()
+            let current_loc = CLLocation(latitude: current_loc_tmp.latitude, longitude: current_loc_tmp.longitude)
+            let obj_loc:CLLocation = CLLocation(latitude: annotation.coordinate.latitude,longitude: annotation.coordinate.longitude)
+            let distance:CLLocationDistance = (current_loc.distance(from: obj_loc))
+            let dist = NSLocalizedString("distance", comment: "") + " %.2f m"
+            
+            // Left accessory
+            let accesoryImage = annotation.img
+            //Creamos un botón en la imagen
+            let leftAccessory = UIButton(type: .custom)
+            leftAccessory.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            leftAccessory.setImage(accesoryImage, for: UIControl.State())
+            
+            // Right Accessory
+            let rightAccessory = UITextView(frame: CGRect(x: 0,y: 0,width: 50,height: 40))
+            rightAccessory.allowsEditingTextAttributes = false
+            rightAccessory.backgroundColor = UIColor.clear
+            rightAccessory.text = annotation.type
+            rightAccessory.textAlignment = .center
+            rightAccessory.font = UIFont(name: "HelveticaNeue", size: 10)
+            rightAccessory.textColor = UIColor(named: "colorText1")
+            
+            //Draw Pin Annotation
+            annotationView.image = UIImage(named:"greenpin")
+            annotationView.canShowCallout = true
+            annotationView.calloutOffset = CGPoint(x: -5, y: 5)
+            annotationView.leftCalloutAccessoryView = leftAccessory
+            annotation.title = place?.title
+            annotation.subtitle = String(format: dist, distance)
+            annotationView.rightCalloutAccessoryView = rightAccessory
+            
             return annotationView
         }
         self.ReplaceColorText(v:view)
-
+        
         return nil
     }
     
 
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView){
         
-        if let annotation = view.annotation as? MKMyPointAnnotation
+        if view.annotation is MKMyPointAnnotation
         {
             print("Place seleccionado == \(String(describing: view.annotation?.title!))")
             
