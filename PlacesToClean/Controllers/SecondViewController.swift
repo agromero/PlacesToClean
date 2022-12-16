@@ -45,7 +45,7 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
         applyTheme()
     }
 
-    @objc func reloadView() {
+    @objc func reloadView(	) {
         print ("Reload Map2")
         self.RemoveMarkers()
         self.AddMarkers()
