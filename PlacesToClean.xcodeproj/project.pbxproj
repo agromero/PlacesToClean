@@ -82,18 +82,16 @@
 		7F2AD7942911A45D00BE2A63 /* PlacesToClean */ = {
 			isa = PBXGroup;
 			children = (
-				7FA95CAA293370AE003C973F /* Models */,
 				7F2AD7952911A45D00BE2A63 /* AppDelegate.swift */,
 				7F4AEE742911BA55000BCDD2 /* SceneDelegate.swift */,
+				7FA95CA1293218F9003C973F /* PlacesDB.xcdatamodeld */,
+				7FA95CAA293370AE003C973F /* Models */,
+				7F4DB489294C4F4B0098BB9B /* Controllers */,
 				7F6F4C0429269769008DDD08 /* PlaceCell.swift */,
 				7FF5C672291C2446000C5989 /* ManagerPlaces.swift */,
 				7F52A4FC29241D3A00EC71BD /* ManagerLocation.swift */,
 				7FA95CA42933661A003C973F /* MKMyPointAnnotation.swift */,
 				7FA36E862942753E003FDC49 /* ThemeManager.swift */,
-				7FA95CA1293218F9003C973F /* PlacesDB.xcdatamodeld */,
-				7FF5C674291C29CC000C5989 /* FirstViewController.swift */,
-				7FF5C676291C29DF000C5989 /* SecondViewController.swift */,
-				7F2AD7AB2911A8F000BE2A63 /* DetailController.swift */,
 				7F2AD79E2911A45F00BE2A63 /* Assets.xcassets */,
 				7FEF16022945C29200920F07 /* Localizable.strings */,
 				7F2AD79B2911A45D00BE2A63 /* Main.storyboard */,
@@ -101,6 +99,16 @@
 				7F2AD7A32911A45F00BE2A63 /* Info.plist */,
 			);
 			path = PlacesToClean;
+			sourceTree = "<group>";
+		};
+		7F4DB489294C4F4B0098BB9B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7FF5C674291C29CC000C5989 /* FirstViewController.swift */,
+				7FF5C676291C29DF000C5989 /* SecondViewController.swift */,
+				7F2AD7AB2911A8F000BE2A63 /* DetailController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		7FA95CAA293370AE003C973F /* Models */ = {
