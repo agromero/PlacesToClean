@@ -91,7 +91,6 @@
 				7FF5C672291C2446000C5989 /* ManagerPlaces.swift */,
 				7F52A4FC29241D3A00EC71BD /* ManagerLocation.swift */,
 				7FA95CA42933661A003C973F /* MKMyPointAnnotation.swift */,
-				7FA36E862942753E003FDC49 /* ThemeManager.swift */,
 				7F2AD79E2911A45F00BE2A63 /* Assets.xcassets */,
 				7FEF16022945C29200920F07 /* Localizable.strings */,
 				7F2AD79B2911A45D00BE2A63 /* Main.storyboard */,
@@ -107,6 +106,7 @@
 				7FF5C674291C29CC000C5989 /* FirstViewController.swift */,
 				7FF5C676291C29DF000C5989 /* SecondViewController.swift */,
 				7F2AD7AB2911A8F000BE2A63 /* DetailController.swift */,
+				7FA36E862942753E003FDC49 /* ThemeManager.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

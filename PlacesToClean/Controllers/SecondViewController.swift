@@ -53,8 +53,7 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
     
     func applyTheme() {
         ThemeManager.applyTabControllerTheme(self.tabBarController)
-        ThemeManager.applyNavBarControllerTheme(self.navigationController, self.navigationItem)        
-        self.navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "colorText1")
+        ThemeManager.applyNavBarControllerTheme(self.navigationController, self.navigationItem)
     }
     
     func RemoveMarkers(){

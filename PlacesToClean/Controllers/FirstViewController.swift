@@ -35,8 +35,6 @@ class FirstViewController: UITableViewController {
         ThemeManager.applyTabControllerTheme(self.tabBarController)
         ThemeManager.applyNavBarControllerTheme(self.navigationController, navigationItem)
 
-        self.navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "colorText1")
-
         //Apply TableView controller
         self.tableView.backgroundColor = UIColor(named: "colorMain1")
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine

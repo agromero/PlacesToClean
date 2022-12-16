@@ -44,6 +44,9 @@ class ThemeManager {
         imageView.contentMode = .scaleAspectFit
         imageView.image = logo
         navigationItem?.titleView = imageView
+
+        navigationItem?.rightBarButtonItem?.tintColor = UIColor(named: "colorText1")
+
     }
 }
 
