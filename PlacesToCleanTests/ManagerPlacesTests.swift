@@ -1,5 +1,5 @@
 //
-//  ManagerPlaces.swift
+//  ManagerPlacesTests.swift
 //  PlacesToCleanTests
 //
 //  Created by AGUS ROMERO on 18/12/22.
@@ -30,7 +30,7 @@ final class ManagerPlacesTests: XCTestCase {
         XCTAssertTrue((managerPlaces.places.first?.title ?? "").contains("Hospital de Bellvitge"))
     }
     
-    func testLoadData_type_canno_be_more_than_9() {
+    func testLoadData_type_canno_be_9() {
         // Comprovem que no té un tipus amb valor 9
         XCTAssertFalse(managerPlaces.places.contains(where: {$0.type == 9 }))
     }

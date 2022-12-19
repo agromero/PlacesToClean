@@ -56,24 +56,24 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
         btnSave.setTitle(NSLocalizedString("save", comment: ""), for: .highlighted)
         
         if place == nil {
-            //Cuando es un nuevo place (CREATE), mostramos:
+            //Quan és un nou place (CREATE), mostrem:
             btnImage.setTitle(NSLocalizedString("addImage", comment: ""), for: .normal)
             btnImage.setTitle(NSLocalizedString("addImage", comment: ""), for: .highlighted)
             
-            //Ocultamos el botón Delete
+            //Ocultem el botó Delete
             btnDelete.isHidden = true
 
-            //Mostramos el PickerView con la fila seleccionada
+            //Mostrem el PickerView amb la fila seleccionada
             viewPicker.selectRow(0, inComponent: 0, animated: false)
 
             editMode = 0
             creationMode()
         } else{
-            //Cuando es un place ya existente (UPDATE), mostramos:
+            //Quan es un place ja existent (UPDATE), mostrem:
             btnImage.setTitle(NSLocalizedString("changeImage", comment: ""), for: .normal)
             btnImage.setTitle(NSLocalizedString("changeImage", comment: ""), for: .highlighted)
             
-            //Mostramos el PickerView con la fila seleccionada
+            //Mostrem el PickerView amb la fila seleccionada
             viewPicker.selectRow(Int(place!.type), inComponent: 0, animated: false)
             
             editMode = 1
@@ -90,10 +90,10 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
         
     func applyTheme() {
         
-        //Color de fondo
+        //Color de fons
         scrollViewInnerView.backgroundColor =  UIColor(named: "colorMain2")
 
-        //Colores de los botones
+        //Colors dels botons
         btnCancel.setTitleColor(UIColor(named: "colorText1"), for: .normal)
         btnDelete.tintColor = (UIColor(named: "colorText1"))
         btnSave.setTitleColor(UIColor(named: "colorText1"), for: .normal)
@@ -103,7 +103,7 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
         btnImage.setTitleColor(UIColor(named: "colorText1"), for: .normal)
         btnImage.setTitleColor(UIColor(named: "colorGrey"), for: .highlighted)
         
-        //Colores de los textos
+        //Colors dels textos
         textName.layer.cornerRadius = 10.0
         textName.backgroundColor = (UIColor(named: "colorMain1"))
         textName.textColor = (UIColor(named: "colorText1"))
@@ -124,7 +124,7 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
         
     fileprivate func updateMode() {
      
-        //Mostramos el Place existente
+        //Mostrem el Place existent
         textName.text = place!.title
         textDescription.text = place!.desc
 
@@ -135,7 +135,7 @@ class DetailController: UIViewController, UITextViewDelegate, UIPickerViewDelega
     
     fileprivate func creationMode() {
 
-        //Creamos un nuevo Place
+        //Creem un nou Place
         textName.attributedPlaceholder = NSAttributedString(
             string: NSLocalizedString("namePlaceholder", comment: ""),
             attributes:[
@@ -357,7 +357,7 @@ extension DetailController {
         objectToSave?.type = Int16(selectedtype)
         objectToSave?.image = imgdata
         
-        //Si estamos en modo Update no actualizamos ubiación
+        //Si estem en mode Update no actualizem la ubiació
         if editMode==0 {
             objectToSave?.id = Int32(Date().timeIntervalSince1970)
             objectToSave?.longitude = localizationLongitude

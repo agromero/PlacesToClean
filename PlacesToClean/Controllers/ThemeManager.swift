@@ -14,21 +14,21 @@ class ThemeManager {
         tabController?.tabBar.items?[1].title = NSLocalizedString("map", comment: "")
         
         tabController?.tabBar.isOpaque = false
-        tabController?.tabBar.barTintColor =  UIColor(named: "colorMain2") // Color Fondo
+        tabController?.tabBar.barTintColor =  UIColor(named: "colorMain2") // Color de Fons
         
         // TabBar Items colors
-        tabController?.tabBar.tintColor = UIColor(named: "colorText1") // Color Item Activo
-        tabController?.tabBar.unselectedItemTintColor = UIColor(named: "colorText2") // Color Item inactivo
+        tabController?.tabBar.tintColor = UIColor(named: "colorText1") // Color Item Actiu
+        tabController?.tabBar.unselectedItemTintColor = UIColor(named: "colorText2") // Color Item inactiu
     }
     
     static func applyNavBarControllerTheme(_ navController: UINavigationController?, _ navigationItem: UINavigationItem?) {
-        // Apply NavBar controller
+        // Appliquem el NavBar controller
         let appearance = UINavigationBarAppearance()
-        // This will change the navigation bar background color
+        // Això canviarà el color de fons de la navigation bar
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor =  UIColor(named: "colorMain1")
         
-        // This will alter the navigation bar title appearance
+        // Això canviarà l'aparença del titol de la navigation bar
         appearance.titleTextAttributes = [NSAttributedString.Key.font:  UIFont.systemFont(ofSize: 18, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.init(named: "colorText1") as Any]
         navController?.navigationBar.standardAppearance = appearance
         navController?.navigationBar.scrollEdgeAppearance = appearance

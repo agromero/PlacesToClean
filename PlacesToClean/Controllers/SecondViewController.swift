@@ -2,8 +2,7 @@
 //  SecondViewController.swift
 //  MyPlaces
 //
-//  Created by user143154 on 9/20/18.
-//  Copyright © 2018 user143154. All rights reserved.
+//  Created by AGUS ROMERO on 9/11/22.
 //
 
 import UIKit
@@ -106,10 +105,10 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
             }
             annotationView.canShowCallout = true
             
-            //Localizamos el place para usar información
+            //Localitzem el place per a fer servir la seva información
             let place = m_places_manager.GetItemById(id: Int32(annotation.place_id) ?? 0)
             
-            //Calculamos la distancia entre el place y nuestra ubicación
+            //Calculem la distancia entre el place i la nostra ubicació
             let current_loc_tmp:CLLocationCoordinate2D  = self.m_location_manager.GetLocation()
             let current_loc = CLLocation(latitude: current_loc_tmp.latitude, longitude: current_loc_tmp.longitude)
             let obj_loc:CLLocation = CLLocation(latitude: annotation.coordinate.latitude,longitude: annotation.coordinate.longitude)
@@ -118,7 +117,7 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
             
             // Left accessory
             let accesoryImage = annotation.img
-            //Creamos un botón en la imagen
+            //Creem un botó a la imatge
             let leftAccessory = UIButton(type: .custom)
             leftAccessory.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
             leftAccessory.setImage(accesoryImage, for: UIControl.State())
@@ -171,7 +170,7 @@ class SecondViewController: UIViewController, MKMapViewDelegate {
         
         let annotation:MKMyPointAnnotation = annotationView.annotation as! MKMyPointAnnotation
         
-        // Mostrar el DetailController de ese Place
+        // Mostrar el DetailController d'aquest Place
         let place = m_places_manager.GetItemById(id: Int32(annotation.place_id) ?? 0)
 
         let dc:DetailController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailController") as! DetailController

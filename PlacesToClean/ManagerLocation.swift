@@ -26,16 +26,16 @@ class ManagerLocation: NSObject, CLLocationManagerDelegate
             
             singletonManager!.m_locationManager.delegate = singletonManager
             
-            // Permitir updates en background
+            // Permetre updates en background
             singletonManager!.m_locationManager.allowsBackgroundLocationUpdates = true
-            // Minima distancia para que detecte cambio de posición = 500 metros
+            // Minima distancia per a que detecti cavi de posició = 500 metros
             singletonManager!.m_locationManager.distanceFilter = 500
-            // Que use la forma más optima para calcular la geolocalización.
+            // Fem servir la forma més optima per a calcular la geolocalització.
             singletonManager!.m_locationManager.desiredAccuracy = kCLLocationAccuracyBest
 
             let status: CLAuthorizationStatus = singletonManager!.m_locationManager.authorizationStatus
 
-            //Comprobar si la aplicación tiene permiso para obtener la posición del usuario
+            //Comprovar si l'aplicació te permiso per a obtenir la posició de l'usuari
             if (status == CLAuthorizationStatus.notDetermined){
                 singletonManager!.m_locationManager.requestWhenInUseAuthorization()
             }
@@ -43,11 +43,11 @@ class ManagerLocation: NSObject, CLLocationManagerDelegate
                 singletonManager!.startLocation()
 	            }
 
-            //Pedimos permiso para lanzar las notificaciones locales
+            //Demanem permis per a activar les notificacions locals
             let center = UNUserNotificationCenter.current()
             center.requestAuthorization(options: [.alert, .sound, .badge])
             { (granted, error) in
-                // Habilitar o deshabilitar funcionalidades dependiendo del permiso
+                // Habilitar o deshabilitar funcionalitats depenent del permis
             }
         }
         return singletonManager!

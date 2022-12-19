@@ -20,7 +20,7 @@ class FirstViewController: UITableViewController {
         view.delegate = self
         view.dataSource = self
         
-        // nos subscribimos al reload
+        // ens subscrivim al reload
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadView), name: NSNotification.Name(rawValue: "reload"), object: nil)
            
         applyTheme()
@@ -41,28 +41,29 @@ class FirstViewController: UITableViewController {
         self.tableView.separatorColor = UIColor(named: "colorText1")
     }
     
-    //Protocolo Tabla
+    // Protocol Tabla
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         m_places_manager.places.count
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // Sirve para indicar subsecciones de la lista. En nuestro caso devolvemos
-        // 1 porque no hay subsecciones.
+        // Serveix per a indicar subseccions de la llista. En el nostre cas retornem
+        // 1 perque no hi ha subseccions.
         1
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //Deseleccionamos el elemento pulsado
+        // Deseleccionem l'element triat
         tableView.deselectRow(at: indexPath, animated: true)
 
-        // Detectar pulsación en un elemento.
+        // Detectem la polsació en un element.
         let place = m_places_manager.places[indexPath.row]
         performSegue(withIdentifier: "goToDetails", sender: place)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        // Devolver la altura de la fila situada en una posición determinada.
+        // Tornem l'alçada de la fila de la taula
         80
     }
     
