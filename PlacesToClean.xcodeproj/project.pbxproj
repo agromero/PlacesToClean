@@ -13,6 +13,7 @@
 		7F2AD7A22911A45F00BE2A63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F2AD7A02911A45F00BE2A63 /* LaunchScreen.storyboard */; };
 		7F2AD7AC2911A8F000BE2A63 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2AD7AB2911A8F000BE2A63 /* DetailController.swift */; };
 		7F4AEE752911BA55000BCDD2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4AEE742911BA55000BCDD2 /* SceneDelegate.swift */; };
+		7F4DB49E294F80A00098BB9B /* ManagerPlacesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4DB49D294F80A00098BB9B /* ManagerPlacesTests.swift */; };
 		7F52A4FD29241D3A00EC71BD /* ManagerLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52A4FC29241D3A00EC71BD /* ManagerLocation.swift */; };
 		7F6F4C0529269769008DDD08 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6F4C0429269769008DDD08 /* PlaceCell.swift */; };
 		7FA36E872942753E003FDC49 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA36E862942753E003FDC49 /* ThemeManager.swift */; };
@@ -26,6 +27,16 @@
 		7FF5C677291C29DF000C5989 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF5C676291C29DF000C5989 /* SecondViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		7F4DB49F294F80A00098BB9B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7F2AD78A2911A45D00BE2A63 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7F2AD7912911A45D00BE2A63;
+			remoteInfo = PlacesToClean;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		7F2AD7922911A45D00BE2A63 /* PlacesToClean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlacesToClean.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F2AD7952911A45D00BE2A63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +46,8 @@
 		7F2AD7A32911A45F00BE2A63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F2AD7AB2911A8F000BE2A63 /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		7F4AEE742911BA55000BCDD2 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		7F4DB49B294F80A00098BB9B /* PlacesToCleanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlacesToCleanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F4DB49D294F80A00098BB9B /* ManagerPlacesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerPlacesTests.swift; sourceTree = "<group>"; };
 		7F52A4FC29241D3A00EC71BD /* ManagerLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerLocation.swift; sourceTree = "<group>"; };
 		7F6F4C0429269769008DDD08 /* PlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
 		7FA36E862942753E003FDC49 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
@@ -60,6 +73,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7F4DB498294F80A00098BB9B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -67,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				7F2AD7942911A45D00BE2A63 /* PlacesToClean */,
+				7F4DB49C294F80A00098BB9B /* PlacesToCleanTests */,
 				7F2AD7932911A45D00BE2A63 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -75,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				7F2AD7922911A45D00BE2A63 /* PlacesToClean.app */,
+				7F4DB49B294F80A00098BB9B /* PlacesToCleanTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -111,6 +133,14 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		7F4DB49C294F80A00098BB9B /* PlacesToCleanTests */ = {
+			isa = PBXGroup;
+			children = (
+				7F4DB49D294F80A00098BB9B /* ManagerPlacesTests.swift */,
+			);
+			path = PlacesToCleanTests;
+			sourceTree = "<group>";
+		};
 		7FA95CAA293370AE003C973F /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +170,24 @@
 			productReference = 7F2AD7922911A45D00BE2A63 /* PlacesToClean.app */;
 			productType = "com.apple.product-type.application";
 		};
+		7F4DB49A294F80A00098BB9B /* PlacesToCleanTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7F4DB4A3294F80A00098BB9B /* Build configuration list for PBXNativeTarget "PlacesToCleanTests" */;
+			buildPhases = (
+				7F4DB497294F80A00098BB9B /* Sources */,
+				7F4DB498294F80A00098BB9B /* Frameworks */,
+				7F4DB499294F80A00098BB9B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7F4DB4A0294F80A00098BB9B /* PBXTargetDependency */,
+			);
+			name = PlacesToCleanTests;
+			productName = PlacesToCleanTests;
+			productReference = 7F4DB49B294F80A00098BB9B /* PlacesToCleanTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -152,6 +200,10 @@
 				TargetAttributes = {
 					7F2AD7912911A45D00BE2A63 = {
 						CreatedOnToolsVersion = 14.0;
+					};
+					7F4DB49A294F80A00098BB9B = {
+						CreatedOnToolsVersion = 14.0;
+						TestTargetID = 7F2AD7912911A45D00BE2A63;
 					};
 				};
 			};
@@ -171,6 +223,7 @@
 			projectRoot = "";
 			targets = (
 				7F2AD7912911A45D00BE2A63 /* PlacesToClean */,
+				7F4DB49A294F80A00098BB9B /* PlacesToCleanTests */,
 			);
 		};
 /* End PBXProject section */
@@ -184,6 +237,13 @@
 				7FEF16062945ED6600920F07 /* Localizable.strings in Resources */,
 				7F2AD79F2911A45F00BE2A63 /* Assets.xcassets in Resources */,
 				7F2AD79D2911A45D00BE2A63 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F4DB499294F80A00098BB9B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,7 +270,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7F4DB497294F80A00098BB9B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F4DB49E294F80A00098BB9B /* ManagerPlacesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7F4DB4A0294F80A00098BB9B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7F2AD7912911A45D00BE2A63 /* PlacesToClean */;
+			targetProxy = 7F4DB49F294F80A00098BB9B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7F2AD79B2911A45D00BE2A63 /* Main.storyboard */ = {
@@ -430,6 +506,42 @@
 			};
 			name = Release;
 		};
+		7F4DB4A1294F80A00098BB9B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MSNL76S2UH;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.agromero.PlacesToCleanTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PlacesToClean.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PlacesToClean";
+			};
+			name = Debug;
+		};
+		7F4DB4A2294F80A00098BB9B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MSNL76S2UH;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.agromero.PlacesToCleanTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PlacesToClean.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PlacesToClean";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -447,6 +559,15 @@
 			buildConfigurations = (
 				7F2AD7A72911A45F00BE2A63 /* Debug */,
 				7F2AD7A82911A45F00BE2A63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7F4DB4A3294F80A00098BB9B /* Build configuration list for PBXNativeTarget "PlacesToCleanTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7F4DB4A1294F80A00098BB9B /* Debug */,
+				7F4DB4A2294F80A00098BB9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

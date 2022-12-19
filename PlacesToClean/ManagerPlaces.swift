@@ -9,10 +9,10 @@ import Foundation
 import CoreData
 import UIKit
 
-class ManagerPlaces {
+public class ManagerPlaces {
 
     //PlacesType Name
-    let listItemType = [
+    public let listItemType = [
         NSLocalizedString("pvElem1", comment: ""),
         NSLocalizedString("pvElem2", comment: ""),
         NSLocalizedString("pvElem3", comment: ""),
@@ -22,21 +22,21 @@ class ManagerPlaces {
         NSLocalizedString("pvElem7", comment: ""),
         NSLocalizedString("pvElem8", comment: "")]
 
-    var places: [PTC] = []
+    public var places: [PTC] = []
     
     
     //******************************
     //Singleton
     //
-    static var shared = ManagerPlaces()
+    static public var shared = ManagerPlaces()
     //******************************
 
     
-    init() {
+    public init() {
         loadData()
     }
     
-    func loadData() {
+    public func loadData() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
         
@@ -44,7 +44,7 @@ class ManagerPlaces {
         self.places = data
     }
     
-    private func fetchRecordsForEntity(_ entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> [NSManagedObject] {
+    public func fetchRecordsForEntity(_ entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> [NSManagedObject] {
         // Create Fetch Request
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
 
@@ -66,7 +66,7 @@ class ManagerPlaces {
         return result
     }
    
-    func GetItemById(id: Int32) -> PTC? {
+    public func GetItemById(id: Int32) -> PTC? {
         places.first( where: { $0.id == id})
     }
 }
